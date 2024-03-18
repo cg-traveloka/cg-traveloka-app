@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { API_CONFIG } from "../../config/apiConfig";
 
 function ResetPassWord() {
   const [newPass, setNewPass] = useState("");
@@ -12,12 +13,10 @@ function ResetPassWord() {
     console.log(email);
     try {
       const resetResponse = await axios.post(
-        "http://localhost:8080/forgetPass/resetPass",
+        `${API_CONFIG.BASE_URL}/forgetPass/resetPass`,
         { newPass, email },
         {
-          headers: {
-            "Content-Type": "application/json",
-          },
+          headers: API_CONFIG.DEFAULT_HEADERS,
         }
       );
 

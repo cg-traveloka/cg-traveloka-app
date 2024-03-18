@@ -4,6 +4,7 @@ import axios from "axios";
 import "../../style/scss/base/_reset.scss";
 
 import "../../style/scss/auth/_register.scss";
+import { API_CONFIG } from "../../config/apiConfig";
 function Register() {
   const [passwordShow, setPasswordShow] = useState(false);
   const [checkPasswordShow, setCheckPasswordShow] = useState(false);
@@ -100,7 +101,9 @@ function Register() {
       } catch (err) {
         console.error(err);
         if (err.response && err.response.status === 406) {
-          newErrors[name] = `${name} đã tồn tại`;
+          // Capitalize the first letter of 'name'
+          let capitalizedError = name.charAt(0).toUpperCase() + name.slice(1);
+          newErrors[name] = `${capitalizedError} đã tồn tại`;
         }
       }
     }
@@ -122,7 +125,7 @@ function Register() {
     }
     try {
       const response = await axios.post(
-        "http://localhost:8080/register/add",
+        `${API_CONFIG.BASE_URL}/register/add`,
         formData,
         {
           headers: {

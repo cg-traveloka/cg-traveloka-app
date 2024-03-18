@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import '../../style/scss/base/_reset.scss'
+import "../../style/scss/base/_reset.scss";
 import "../../style/scss/auth/_login.scss";
+import { API_CONFIG } from "../../config/apiConfig";
 function Login() {
   const [formData, setFormData] = useState({});
   const [passwordShow, setPasswordShow] = useState(false);
@@ -24,17 +25,14 @@ function Login() {
       let config = {
         method: "post",
         maxBodyLength: Infinity,
-        url: "http://localhost:8080/login/account",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        url: `${API_CONFIG.BASE_URL}/login/account`,
+        headers: API_CONFIG.DEFAULT_HEADERS,
         data: data,
       };
-
       const response = await axios.request(config);
       console.log(JSON.stringify(response.data));
     } catch (error) {
-      console.log(error);
+      throw error;
     }
   };
 

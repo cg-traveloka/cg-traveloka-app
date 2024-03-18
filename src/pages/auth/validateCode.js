@@ -41,7 +41,7 @@ function ValidateCode({ action, validateUrl }) {
   };
   return (
     <div className="flexbox">
-      <div className="container">
+      <div className="container" style={{ marginBottom: "300px" }}>
         <div className="validate-code-container">
           <div className="card">
             <img
