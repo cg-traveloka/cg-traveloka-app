@@ -1,0 +1,30 @@
+.flight-section {
+  background-image: linear-gradient(to top, #0194f3, #47b1e7);
+  height: 22rem;
+  overflow: hidden;
+  &-container {
+    padding-top: 0.5rem;
+    padding-left: 8rem;
+    gap: 1rem;
+
+    &-gallery {
+      flex-wrap: nowrap;
+      display: flex;
+      width: auto;
+      border-radius: 0.5px;
+      box-shadow: rgb(0, 0, 0, 1);
+      &-card {
+        display: flex;
+        gap: 1.5rem;
+        width: 29rem;
+      }
+    }
+  }
+  &-navigation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6rem;
+    margin-top: 0.5rem;
+  }
+}
