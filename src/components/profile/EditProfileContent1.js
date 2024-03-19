@@ -122,31 +122,54 @@ function EditProfileContent1() {
             <div className="right-content w-2/3 pl-6 ">
               <div className="flex justify-between pb-4 ">
                 <h1 className="font-bold text-2xl">Điểm thưởng của tôi</h1>
-                <button href="#" style={{ color: "rgba(1, 148, 243, 1)" }}>
-                  Tìm hiểu thêm
-                </button>
+                <a href="#">
+                  <p
+                    className="font-semibold mt-2"
+                    style={{ color: "rgba(1, 148, 243, 1)" }}
+                  >
+                    Tìm hiểu thêm
+                  </p>
+                </a>
               </div>
-              <div
-                className="bg-gray flex h-12 rounded-lg border-solid border-2 border-gray-200 pt-3"
-                style={{}}
-              >
+              <div className="bg-gray flex h-48 rounded-lg border-solid border-2 border-gray-200">
                 <div
                   className="w-1/3"
                   style={{
                     backgroundColor: "rgb(27, 160, 226)",
+                    color: "white",
                   }}
                 >
-                  <h1>Điểm khả dụng</h1>
-                </div>
-                <div className="w-2/3">
-                  <h1>Tiến trình tích điểm</h1>
+                  <a href="#">
+                    <p className="mt-2 mx-3 font-semibold">ĐIỂM KHẢ DỤNG</p>
+                  </a>
+
+                  <div className="gap-4">
+                    <p className="mt-9 mx-3 font-semibold text-4xl">0</p>
+                    <p className="mt-1 mx-3 font-semibold text-base">
+                      (Trị giá VND0)
+                    </p>
+                  </div>
                 </div>
 
-                <div className="whitespace-nowrap">
+                <div
+                  className="w-2/3 mt-2 ms-3 font-semibold"
+                  style={{ color: "gray" }}
+                >
+                  <h1>TIẾN TRÌNH TÍCH ĐIỂM</h1>
+                  <div className="">
+                    <img
+                      src="https://ik.imagekit.io/tvlk/image/imageResource/2017/11/23/1511416825930-fae0f0b3b42305f47e30ada2fbc7c74f.png?tr=q-75,w-24"
+                      alt="icon-airplane"
+                    ></img>
+                  </div>
+                </div>
+
+                <div
+                  className="whitespace-nowrap mt-2 me-3 font-semibold"
+                  style={{ color: "rgba(1, 148, 243, 1)" }}
+                >
                   <h1>Chi tiết</h1>
                 </div>
-                <div className="flex-grow"></div>
-                <div></div>
               </div>
             </div>
           </div>

@@ -1,5 +1,5 @@
 import React from "react";
-import "../../style/scss/flight-search/_flightSearch.scss";
+import "../../style/scss/flight/_flightSearch.scss";
 function Search() {
   return (
     <div>

@@ -11,6 +11,7 @@ function EditProfileContent2() {
               Tìm hiểu thêm
             </button>
           </div>
+
           <div className="bg-white flex h-14">
             <div className="w-full bg-blue-500">aaaa</div>
             <div className="flex-grow"></div>

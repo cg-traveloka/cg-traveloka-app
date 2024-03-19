@@ -2,8 +2,8 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Login from "./pages/auth/login";
 import "./style/scss/main.scss";
 import AuthRoutes from "./routes/AuthRoutes";
-import EditProfileContent1 from "./components/EditProfileContent1";
-import EditProfileContent2 from "./components/EditProfileContent2";
+import EditProfileContent1 from "./components/profile/EditProfileContent1";
+import EditProfileContent2 from "./components/profile/EditProfileContent2";
 import Flight from "./pages/flights/Flights";
 import HomePage from "./pages/HomePage";
 
@@ -15,10 +15,7 @@ function App() {
         <Route path="/*" element={<AuthRoutes />} /> */}
         <Route path="/" element={<EditProfileContent1 />} />
         {/* <Route path="/" element={<EditProfileContent2 />} /> */}
-
-        {/* <Route path="/" element={<Login />} />
-        <Route path="/*" element={<AuthRoutes />} />
-        <Route path="/test" element={<HomePage />} /> */}
+        {/* <Route path="/test" element={<HomePage />} /> */}
       </Routes>
     </BrowserRouter>
   );
