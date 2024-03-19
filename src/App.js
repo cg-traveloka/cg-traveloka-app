@@ -4,6 +4,8 @@ import "./style/scss/main.scss";
 import AuthRoutes from "./routes/AuthRoutes";
 import EditProfileContent1 from "./components/EditProfileContent1";
 import EditProfileContent2 from "./components/EditProfileContent2";
+import Flight from "./pages/flights/Flights";
+import HomePage from "./pages/HomePage";
 
 function App() {
   return (
@@ -13,6 +15,10 @@ function App() {
         <Route path="/*" element={<AuthRoutes />} /> */}
         <Route path="/" element={<EditProfileContent1 />} />
         {/* <Route path="/" element={<EditProfileContent2 />} /> */}
+
+        <Route path="/" element={<Login />} />
+        <Route path="/*" element={<AuthRoutes />} />
+        <Route path="/test" element={<HomePage />} />
       </Routes>
     </BrowserRouter>
   );
