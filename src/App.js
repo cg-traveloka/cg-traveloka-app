@@ -1,8 +1,10 @@
 import "./style/scss/main.scss"
-
+import HotelSearchBar from "./components/layout/HotelSearchBar"
 function App() {
   return (
-    <h1>Hello CG-Traveloka-App</h1>
+   <HotelSearchBar>
+
+   </HotelSearchBar>
   )
 }
 
