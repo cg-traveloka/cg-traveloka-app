@@ -16,9 +16,9 @@ function App() {
         <Route path="/" element={<EditProfileContent1 />} />
         {/* <Route path="/" element={<EditProfileContent2 />} /> */}
 
-        <Route path="/" element={<Login />} />
+        {/* <Route path="/" element={<Login />} />
         <Route path="/*" element={<AuthRoutes />} />
-        <Route path="/test" element={<HomePage />} />
+        <Route path="/test" element={<HomePage />} /> */}
       </Routes>
     </BrowserRouter>
   );
