@@ -4,6 +4,10 @@ import "./style/scss/main.scss";
 import AuthRoutes from "./routes/AuthRoutes";
 import Flight from "./pages/flights/Flights";
 import HomePage from "./pages/HomePage";
+import FlightFilter from "./components/flight-search/flightFilter";
+import Header from "./components/flights/Header";
+import Search from "./components/flights/Search";
+import Banner from "./components/hompage/Banner";
 
 function App() {
   return (
