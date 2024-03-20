@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+import axios from "../../config/privateAxios";
 import { useNavigate } from "react-router-dom";
 import "../../style/scss/auth/_forgetPass.scss";
 function ValidateCode({ action, validateUrl }) {
