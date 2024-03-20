@@ -1,3 +1,6 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 @import "base/reset";
 @import "base/variables";
 @import "base/common";
@@ -5,3 +8,4 @@
 @import "base/buttons";
 @import "layout/header";
 @import "layout/footer";
+@import "layout/HotelSearchBar"
