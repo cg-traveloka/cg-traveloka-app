@@ -6,6 +6,9 @@ import Hotels from "./pages/hotel/Hotels";
 import ProtectedRoute from "./routes/ProtectedRoute";
 import { useSelector} from "react-redux";
 import { selectUser} from "./redux/features/userSlice";
+import Flight from "./pages/flights/Flights";
+import HomePage from "./pages/HomePage";
+
 
 function App() {
 
@@ -19,6 +22,7 @@ function App() {
         <Route element={<ProtectedRoute isAllowed={user.user!=null} />}>
             <Route path="/hotels" element={<Hotels/>}/> 
         </Route>
+        <Route path="/test" element={<HomePage />} />
       </Routes>
     </BrowserRouter>
   );
