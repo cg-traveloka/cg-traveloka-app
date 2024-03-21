@@ -1,12 +1,17 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
+import axios from "../../config/privateAxios";
 import "../../style/scss/base/_reset.scss";
 import "../../style/scss/auth/_login.scss";
-import { API_CONFIG } from "../../config/apiConfig";
+import { useSelector, useDispatch } from "react-redux";
+import { selectUser, saveUser } from "../../redux/features/userSlice";
+
 function Login() {
   const [formData, setFormData] = useState({});
   const [passwordShow, setPasswordShow] = useState(false);
+  const selector = useSelector(selectUser);
+  const dispatch = useDispatch();
+
   const togglePasswordVisiblity = () => {
     setPasswordShow(passwordShow ? false : true);
   };
@@ -21,16 +26,11 @@ function Login() {
         username: formData.username,
         password: formData.password,
       });
-
-      let config = {
-        method: "post",
-        maxBodyLength: Infinity,
-        url: `${API_CONFIG.BASE_URL}/login/account`,
-        headers: API_CONFIG.DEFAULT_HEADERS,
-        data: data,
-      };
-      const response = await axios.request(config);
-      console.log(JSON.stringify(response.data));
+      await axios.post('/login/account', data)
+        .then(result => {
+          dispatch(saveUser(result.data));
+          console.log(result.data);
+        });
     } catch (error) {
       throw error;
     }

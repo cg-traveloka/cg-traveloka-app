@@ -1,5 +1,4 @@
 import React from "react";
-import "../../style/scss/home-page/_banner.scss";
 import { Link } from "react-router-dom";
 function Banner() {
   return (

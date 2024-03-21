@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "../../style/scss/flight-search/_flightFilter.scss";
 import RangeSlider from "./RangeSlider";
 function FlightFilter({ flightBrands }) {
   const [lists, setList] = useState(["a", "b", "c"]);
