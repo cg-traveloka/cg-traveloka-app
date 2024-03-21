@@ -39,7 +39,7 @@ function Login() {
           dispatch(setModalStatus("sucess"))
           dispatch(setModalIsOpen(true));
           toast.success("Đăng nhập thành công")
-          // navigate("/hotels");
+          navigate("/hotels");
         });
     } catch (error) {
       dispatch(setModalMessage("Đăng nhập thất bại"));

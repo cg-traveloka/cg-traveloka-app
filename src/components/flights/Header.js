@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "../../style/scss/flight-search/_header.scss";
 
 function Header() {
   return (
