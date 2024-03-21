@@ -1,16 +1,15 @@
 import React from "react";
-import "../../style/scss/home-page/_banner.scss";
 import { Link } from "react-router-dom";
 function Banner() {
   return (
     <div>
       <main>
-        <div className="banner" id="bn">
-          <div className="banner-container">
-            <div className="banner-container-row1">
-              <div className="banner-container-row1-col-empty"></div>
-              <div className="banner-container-row1-col-content">
-                <div className="banner-container-row1-col-content-detail">
+        <div className="homepage-banner" id="bn">
+          <div className="homepage-banner-container">
+            <div className="homepage-banner-container-row1">
+              <div className="homepage-banner-container-row1-col-empty"></div>
+              <div className="homepage-banner-container-row1-col-content">
+                <div className="homepage-banner-container-row1-col-content-detail">
                   <div className="text">
                     <h1>VIỆT NAM </h1>
                     <p>
@@ -30,9 +29,9 @@ function Banner() {
                 </div>
               </div>
 
-              <div className="banner-container-row1-col-content-2">
-                <div className="banner-container-row1-col-content-2-image">
-                  <div className="banner-container-row1-col-content-2-image-detail">
+              <div className="homepage-banner-container-row1-col-content-2">
+                <div className="homepage-banner-container-row1-col-content-2-image">
+                  <div className="homepage-banner-container-row1-col-content-2-image-detail">
                     <div className="box">
                       <div className="text2">
                         <h4>Vịnh Hạ Long</h4>
@@ -45,7 +44,7 @@ function Banner() {
                       <Link to={""}>
                         <img
                           src="https://toigingiuvedep.vn/wp-content/uploads/2021/06/anh-ha-long-cuc-dep-cho-dien-thoai.jpeg"
-                          alt="banner"
+                          alt="homepage-banner"
                           width="auto"
                           style={{ height: "300px" }}
                         />
@@ -53,7 +52,7 @@ function Banner() {
                     </div>
                   </div>
 
-                  <div className="banner-container-row1-col-content-2-image-detail">
+                  <div className="homepage-banner-container-row1-col-content-2-image-detail">
                     <div className="box">
                       <div className="text2">
                         <h4>Phố cổ Hội An</h4>
@@ -66,7 +65,7 @@ function Banner() {
                       <Link to={""}>
                         <img
                           src="https://www.planetware.com/photos-large/VIE/vietnam-hoi-an-riverfront.jpg"
-                          alt="banner"
+                          alt="homepage-banner"
                           width="auto"
                           style={{ height: "300px" }}
                         />
@@ -74,7 +73,7 @@ function Banner() {
                     </div>
                   </div>
 
-                  <div className="banner-container-row1-col-content-2-image-detail">
+                  <div className="homepage-banner-container-row1-col-content-2-image-detail">
                     <div className="box">
                       <div className="text2">
                         <h4>Hang én</h4>
@@ -87,7 +86,7 @@ function Banner() {
                       <Link to={""}>
                         <img
                           src="https://lp-cms-production.imgix.net/2021-03/Hang_En_Cave_Vietnam.jpg?auto=format&q=75&w=1024"
-                          alt="banner"
+                          alt="homepage-banner"
                           width="auto"
                           style={{ height: "300px" }}
                         />

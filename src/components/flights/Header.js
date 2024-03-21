@@ -5,7 +5,7 @@ function Header() {
   return (
     <div>
       <header>
-        <div className="container">
+        <div className="flight-container">
           <div className="row">
             <div className="logo">
               <img
