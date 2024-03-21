@@ -10,9 +10,10 @@ import Modal from 'react-modal';
 import { selectModal,setModalIsOpen} from "./redux/features/modalSlice";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Flight from "./pages/flights/Flights";
+import HomePage from "./pages/HomePage";
 
 Modal.setAppElement('#root');
-
 
 function App() {
   const user = useSelector(selectUser);
