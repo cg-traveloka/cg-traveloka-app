@@ -4,8 +4,9 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from "react-redux";
+import "./style/scss/main.scss";
 import store from './redux/app/store';
-import { SetPrivateAxiosRequest,SetPrivateAxiosRespon } from "./config/axiosInterceptor";
+import { SetPrivateAxiosRequest, SetPrivateAxiosRespon } from "./config/axiosInterceptor";
 
 
 SetPrivateAxiosRequest();
