@@ -1,16 +1,21 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "../../config/privateAxios";
 import "../../style/scss/base/_reset.scss";
 import "../../style/scss/auth/_login.scss";
 import { useSelector, useDispatch } from "react-redux";
 import { selectUser, saveUser } from "../../redux/features/userSlice";
+import { selectModal, setModalIsOpen, setModalMessage, setModalStatus } from "../../redux/features/modalSlice";
+import { toast } from "react-toastify";
+
 
 function Login() {
   const [formData, setFormData] = useState({});
   const [passwordShow, setPasswordShow] = useState(false);
-  const selector = useSelector(selectUser);
+  const user = useSelector(selectUser);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const modal = useSelector(selectModal);
 
   const togglePasswordVisiblity = () => {
     setPasswordShow(passwordShow ? false : true);
@@ -30,8 +35,17 @@ function Login() {
         .then(result => {
           dispatch(saveUser(result.data));
           console.log(result.data);
+          dispatch(setModalMessage("Đăng nhập thành công"));
+          dispatch(setModalStatus("sucess"))
+          dispatch(setModalIsOpen(true));
+          toast.success("Đăng nhập thành công")
+          // navigate("/hotels");
         });
     } catch (error) {
+      dispatch(setModalMessage("Đăng nhập thất bại"));
+      dispatch(setModalStatus("error"))
+      dispatch(setModalIsOpen(true));
+      toast.error("Đăng nhập thất bại")
       throw error;
     }
   };
