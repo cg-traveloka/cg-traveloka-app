@@ -4,7 +4,7 @@ import EditProfileContent1 from "./EditTable";
 
 function EditProfileContent2() {
   return (
-    <div className="content mx-auto w-4/5 ">
+    <div className="edit-bonus mx-auto w-4/5 ">
       <div className="flex gap 4">
         <div className="right-content w-2/3 pl-6 ">
           <div className="flex justify-between pb-4 ">
