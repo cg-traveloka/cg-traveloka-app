@@ -1,23 +1,22 @@
 import React from "react";
-import "../../style/scss/flight-search/_flightSearch.scss";
 function Search() {
   return (
     <div>
-      <div className="flight-search">
-        <div className="flight-search-inner">
-          <div className="flight-search-inner-box">
-            <div className="flight-search-inner-box-content-top">
-              <div className="flight-search-inner-box-content-top-left">
+      <div className="flight-page-search">
+        <div className="flight-page-search-inner">
+          <div className="flight-page-search-inner-box">
+            <div className="flight-page-search-inner-box-content-top">
+              <div className="flight-page-search-inner-box-content-top-left">
                 <p>Đặt vé máy bay</p>
               </div>
-              <div className="flight-search-inner-box-content-top-right">
-                <div className="flight-search-inner-box-content-top-right-button">
+              <div className="flight-page-search-inner-box-content-top-right">
+                <div className="flight-page-search-inner-box-content-top-right-button">
                   Mở bản đồ
                 </div>
               </div>
             </div>
             <div
-              className="flight-search-inner-box-content-mid"
+              className="flight-page-search-inner-box-content-mid"
               style={{ gap: "3px" }}
             >
               <div
@@ -28,11 +27,11 @@ function Search() {
                   padding: "10px 20px",
                 }}
               >
-                <div className="flight-search-inner-box-content-mid-from">
+                <div className="flight-page-search-inner-box-content-mid-from">
                   Từ
                 </div>
                 <div
-                  class="flight-search-inner-box-content-mid-from-content"
+                  class="flight-page-search-inner-box-content-mid-from-content"
                   style={{ width: "200px" }}
                 >
                   <svg
@@ -62,7 +61,7 @@ function Search() {
                     ></path>
                   </svg>
                   <input
-                    class="flight-search-inner-box-content-mid-from-content-input "
+                    class="flight-page-search-inner-box-content-mid-from-content-input "
                     type="text"
                     placeholder="Dari"
                     value="Jakarta (JKTA)"
@@ -77,11 +76,11 @@ function Search() {
                   padding: "10px 20px",
                 }}
               >
-                <div className="flight-search-inner-box-content-mid-from">
+                <div className="flight-page-search-inner-box-content-mid-from">
                   Từ
                 </div>
                 <div
-                  class="flight-search-inner-box-content-mid-from-content"
+                  class="flight-page-search-inner-box-content-mid-from-content"
                   style={{ width: "200px" }}
                 >
                   <svg
@@ -111,7 +110,7 @@ function Search() {
                     ></path>
                   </svg>
                   <input
-                    class="flight-search-inner-box-content-mid-from-content-input "
+                    class="flight-page-search-inner-box-content-mid-from-content-input "
                     type="text"
                     placeholder="Dari"
                     value="Jakarta (JKTA)"
@@ -127,12 +126,12 @@ function Search() {
                 }}
               >
                 <div
-                  className="flight-search-inner-box-content-mid-from"
+                  className="flight-page-search-inner-box-content-mid-from"
                   style={{ width: "250px" }}
                 >
                   Từ
                 </div>
-                <div class="flight-search-inner-box-content-mid-from-content">
+                <div class="flight-page-search-inner-box-content-mid-from-content">
                   <svg
                     width="16"
                     height="16"
@@ -160,7 +159,7 @@ function Search() {
                     ></path>
                   </svg>
                   <input
-                    class="flight-search-inner-box-content-mid-from-content-input "
+                    class="flight-page-search-inner-box-content-mid-from-content-input "
                     type="text"
                     placeholder="Dari"
                     value="Jakarta (JKTA)"
@@ -169,7 +168,7 @@ function Search() {
               </div>
             </div>
             <div
-              className="flight-search-inner-box-content-mid"
+              className="flight-page-search-inner-box-content-mid"
               style={{ gap: "245px" }}
             >
               <div
@@ -180,11 +179,11 @@ function Search() {
                   padding: "10px 20px",
                 }}
               >
-                <div className="flight-search-inner-box-content-mid-from">
+                <div className="flight-page-search-inner-box-content-mid-from">
                   Từ
                 </div>
                 <div
-                  class="flight-search-inner-box-content-mid-from-content"
+                  class="flight-page-search-inner-box-content-mid-from-content"
                   style={{ width: "200px" }}
                 >
                   <svg
@@ -214,7 +213,7 @@ function Search() {
                     ></path>
                   </svg>
                   <input
-                    class="flight-search-inner-box-content-mid-from-content-input "
+                    class="flight-page-search-inner-box-content-mid-from-content-input "
                     type="text"
                     placeholder="Dari"
                     value="Jakarta (JKTA)"
@@ -229,11 +228,11 @@ function Search() {
                   padding: "10px 20px",
                 }}
               >
-                <div className="flight-search-inner-box-content-mid-from">
+                <div className="flight-page-search-inner-box-content-mid-from">
                   Từ
                 </div>
                 <div
-                  class="flight-search-inner-box-content-mid-from-content"
+                  class="flight-page-search-inner-box-content-mid-from-content"
                   style={{ width: "265px" }}
                 >
                   <svg
@@ -263,7 +262,7 @@ function Search() {
                     ></path>
                   </svg>
                   <select
-                    class="flight-search-inner-box-content-mid-from-content-input"
+                    class="flight-page-search-inner-box-content-mid-from-content-input"
                     name="seat-type"
                     id=""
                     style={{ width: "100%", marginTop: "10px" }}
