@@ -5,7 +5,6 @@ import ForgetPass from "../pages/auth/forgetPassword";
 import ResetPassWord from "../pages/auth/resetPassword";
 import ValidateCode from "../pages/auth/validateCode";
 import { Route, Routes } from "react-router-dom";
-import { API_CONFIG } from "../config/apiConfig";
 
 function AuthRoutes() {
   return (
@@ -17,7 +16,7 @@ function AuthRoutes() {
         element={
           <ValidateCode
             action="đăng ký"
-            validateUrl={`${API_CONFIG.BASE_URL}/register/validateCode`}
+            validateUrl={'/register/validateCode'}
           />
         }
       />
@@ -27,7 +26,7 @@ function AuthRoutes() {
         element={
           <ValidateCode
             action="lấy lại mật khẩu"
-            validateUrl={`${API_CONFIG.BASE_URL}/forgetPass/validateCode`}
+            validateUrl={'forgetPass/validateCode'}
           />
         }
       />

@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
+import axios from "../../config/privateAxios";
 import "../../style/scss/base/_reset.scss";
 
 import "../../style/scss/auth/_register.scss";
-import { API_CONFIG } from "../../config/apiConfig";
 function Register() {
   const [passwordShow, setPasswordShow] = useState(false);
   const [checkPasswordShow, setCheckPasswordShow] = useState(false);
@@ -125,13 +124,8 @@ function Register() {
     }
     try {
       const response = await axios.post(
-        `${API_CONFIG.BASE_URL}/register/add`,
-        formData,
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
+        'register/add',
+        formData
       );
 
       if (response.status === 200) {

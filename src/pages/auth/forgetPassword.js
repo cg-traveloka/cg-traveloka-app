@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../../style/scss/auth/_forgetPass.scss";
-import axios from "axios";
-import { API_CONFIG } from "../../config/apiConfig";
+import axios from "../../config/privateAxios";
 
 function ForgetPass() {
   const [email, setEmail] = useState("");
@@ -13,12 +12,8 @@ function ForgetPass() {
   const checkEmail = async () => {
     try {
       const checkResponse = await axios.post(
-        `${API_CONFIG.BASE_URL}/register/check/email`,
-        email,
-        {
-          headers: API_CONFIG.DEFAULT_HEADERS,
-        }
-      );
+        '/register/check/email',
+        email);
 
       if (checkResponse.status === 200) {
         setError("");
@@ -34,11 +29,8 @@ function ForgetPass() {
   const sendCode = async () => {
     try {
       const sendCodeResponse = await axios.post(
-        `${API_CONFIG.BASE_URL}/forgetPass/sendCode`,
-        email,
-        {
-          headers: API_CONFIG.DEFAULT_HEADERS,
-        }
+        '/forgetPass/sendCode',
+        email
       );
       localStorage.setItem("email", email);
 

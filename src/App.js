@@ -6,8 +6,16 @@ import Flight from "./pages/flights/Flights";
 import HomePage from "./pages/HomePage";
 import EditCustomerInformationSaved from "./components/profile/EditCustomerInformationSaved";
 import EditProfileBonus from "./pages/profile/EditProfileBonus";
+import Hotels from "./pages/hotel/Hotels";
+import ProtectedRoute from "./routes/ProtectedRoute";
+import { useSelector } from "react-redux";
+import { selectUser } from "./redux/features/userSlice";
+import Flight from "./pages/flights/Flights";
+import HomePage from "./pages/HomePage";
 
 function App() {
+  const user = useSelector(selectUser);
+
   return (
     <BrowserRouter>
       <Routes>
@@ -15,6 +23,9 @@ function App() {
         <Route path="/*" element={<AuthRoutes />} /> */}
         {/* <Route path="/test" element={<HomePage />} /> */}
         <Route path="/" element={<EditCustomerInformationSaved />} />
+        <Route element={<ProtectedRoute isAllowed={user.user != null} />}>
+          <Route path="/hotels" element={<Hotels />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );
