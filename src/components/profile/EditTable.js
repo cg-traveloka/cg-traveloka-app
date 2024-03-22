@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 function EditTable() {
   return (
     <div
-      className="left-content border-solid border-2 border-gray-200"
+      className="edit-table left-content border-solid border-2 border-gray-200"
       style={{ width: "300px" }}
     >
       <div className="gap-3 flex flex-col">

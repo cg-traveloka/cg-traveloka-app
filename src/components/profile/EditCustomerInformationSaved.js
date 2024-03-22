@@ -4,7 +4,7 @@ import EditTable from "./EditTable";
 
 function EditCustomerInformationSaved() {
   return (
-    <div className="mx-auto my-auto w-7/12 pt-5">
+    <div className="edit-customer-information mx-auto my-auto w-7/12 pt-5">
       <div className="flex gap 4">
         <EditTable />
         <div class="passenger-list">
