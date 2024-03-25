@@ -8,8 +8,7 @@
 @import "base/buttons";
 @import "layout/header";
 @import "layout/footer";
-@import "layout/HotelSearchBar";
-@import "profile/customer";
+@import "layout/hotel/HotelSearchBar";
 @import "home-page/header";
 @import "flight-search/flightFilter";
 @import "home-page/banner";
@@ -18,3 +17,11 @@
 @import "flight/banner";
 @import "flight/flightSearch";
 @import "layout/modal";
+@import "layout/modal";
+@import "pages/hotels";
+@import "layout/hotel/HotelFilterSideBar";
+@import "layout/hotel//HotelFilterMoneyRange";
+@import "layout/hotel/HotelFilterStarChecked";
+@import "layout/hotel//HotelFilterBanner";
+@import "layout/hotel//HotelSortBar";
+@import "layout/hotel//HotelCard";
