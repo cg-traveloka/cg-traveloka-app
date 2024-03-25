@@ -12,6 +12,13 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import HomePage from "./pages/HomePage";
+import FlightTitle from "./components/flight-search/FlightTitle";
+import Search from "./components/flights/Search";
+import FlightFilter from "./components/flight-search/flightFilter";
+import FlightSearch from "./pages/FlightSearch";
+import Flight from "./pages/flights/Flights";
+import FlightTera from "./pages/FightTera";
+import Test from "./components/flights/test";
 
 Modal.setAppElement("#root");
 
@@ -92,6 +99,8 @@ function App() {
           <Route element={<ProtectedRoute isAllowed={user.user != null} />}>
             <Route path="/hotels" element={<Hotels />} />
           </Route>
+          <Route path="/test" element={<Flight />} />
+          <Route path="/test2" element={<Test />} />
         </Routes>
       </BrowserRouter>
 

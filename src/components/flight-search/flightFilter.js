@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import RangeSlider from "./RangeSlider";
+
 function FlightFilter({ flightBrands }) {
   const [lists, setList] = useState(["a", "b", "c"]);
   const [lists2, setList2] = useState(["a", "b", "c"]);
@@ -69,7 +70,10 @@ function FlightFilter({ flightBrands }) {
                       xmlns="http://www.w3.org/2000/svg"
                       accentColor="#CDD0D1"
                       fillColor="#0194F3"
-                      style={{ border: "1px solid black", borderRadius: "5px" }}
+                      style={{
+                        border: "1px solid black",
+                        borderRadius: "5px",
+                      }}
                     >
                       <path
                         d="M6.5 12L10.5 16L18 8.5"
@@ -161,7 +165,7 @@ function FlightFilter({ flightBrands }) {
                 <p>
                   <span>
                     <i
-                      class="fa-light fa-square-check"
+                      className="fa-light fa-square-check"
                       style="color: #A4A6A8;"
                     ></i>
                   </span>
