@@ -43,7 +43,7 @@ function EditPendingBookingAirplaneStatus() {
               className="ml-2 mt-8 font-bold text-xs rounded-full text-white justify-center items-center flex h-6 w-6"
               style={{ backgroundColor: "rgb(255, 94, 31)" }}
             >
-              1
+              {bookings.length}
             </p>
           </div>
 

@@ -4,6 +4,7 @@ const initialState = {
   hotelName: null,
   flightNameFromCity: null,
   flightNameToCity: null,
+  totalMoney: null,
   status: null,
   bookings: [],
 };
@@ -14,6 +15,9 @@ export const bookingSlice = createSlice({
   reducers: {
     setBooking: (state, action) => {
       state.bookings = action.payload;
+    },
+    changeTotalMoney: (state, action) => {
+      state.totalMoney = action.payload;
     },
     changeHotelName: (state, action) => {
       state.hotelName = action.payload;
@@ -34,6 +38,7 @@ export const {
   changeHotelName,
   changeFlightNameFromCity,
   changeFlightNameToCity,
+  changeTotalMoney,
   changeStatus,
   setBooking,
 } = bookingSlice.actions;

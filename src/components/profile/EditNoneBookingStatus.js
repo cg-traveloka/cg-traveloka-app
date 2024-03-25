@@ -6,10 +6,10 @@ function EditNoneBookingStatus() {
     <div className="edit-booking-hotel mx-auto my-auto w-8/12 pt-5">
       <div className="flex">
         <EditTable />
-        <div className="right-content w-4/5 pl-5">
+        <div className="right-content w-4/5 pl-5 font-sans">
           <div className="flex flex-col justify-between pb-4">
             <h1 className="font-bold text-3xl mt-7">
-              Vé điện tử & phiếu thanh toán hiện hành
+              Đã thanh toán thành công
             </h1>
           </div>
 

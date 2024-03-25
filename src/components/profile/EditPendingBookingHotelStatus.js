@@ -30,11 +30,11 @@ function EditPendingBookingHotelStatus() {
     <div className="edit-booking-hotel mx-auto my-auto w-8/12 pt-5">
       <div className="flex">
         <EditTable />
-        <div className="right-content w-4/5 pl-5">
-          <div className="flex font-sans">
-            <h1 className="font-bold text-2xl mt-7 ">Đang mua hàng</h1>
+        <div className="right-content w-4/5 pl-5 font-sans">
+          <div className="flex">
+            <h1 className="font-bold text-2xl mt-2">Đang mua hàng</h1>
             <p
-              className="ml-2 mt-8 font-bold text-xs rounded-full text-white justify-center items-center flex h-6 w-6"
+              className="ml-2 mt-3 font-bold text-xs rounded-full text-white justify-center items-center flex h-6 w-6"
               style={{ backgroundColor: "rgb(255, 94, 31)" }}
             >
               {bookings.length}
@@ -47,6 +47,7 @@ function EditPendingBookingHotelStatus() {
             >
               <div className="my-3">
                 <div className="px-2 flex">
+
                   <div className="flex gap-3">
                     <div className="border-l-2 border-s-cyan-600 border-solid -ms-2"></div>
                     <HotelIcon />
@@ -88,13 +89,11 @@ function EditPendingBookingHotelStatus() {
             </div>
           ))}
 
-          <div className="mt-5 flex flex-col justify-between pb-4 font-sans">
-            <h1 className="font-bold text-2xl mt-7">
-              Vé điện tử & phiếu thanh toán hiện hành
-            </h1>
-          </div>
+          {/* <div className="mt-5 flex flex-col justify-between pb-4 font-sans">
+            <h1 className="font-bold text-xl mt-3">Đã thanh toán thành công</h1>
+          </div> */}
 
-          <div className="mt-2 shadow-sm bg-gray rounded-lg border-solid border-2 border-gray-200 font-sans">
+          {/* <div className="mt-2 shadow-sm bg-gray rounded-lg border-solid border-2 border-gray-200 font-sans">
             <div className="ms-2 my-3">
               <div className="px-2 gap-4 flex">
                 <img
@@ -113,13 +112,13 @@ function EditPendingBookingHotelStatus() {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
 
-          <h1 className="font-bold text-2xl mt-7 font-sans">
+          {/* <h1 className="font-bold text-2xl mt-5 font-sans">
             Lịch sử giao dịch
-          </h1>
+          </h1> */}
 
-          <div className="mt-2 shadow-sm bg-gray rounded-lg border-solid border-2 border-gray-200">
+          {/* <div className="mt-2 mb-16 shadow-sm bg-gray rounded-lg border-solid border-2 border-gray-200">
             <div className="ms-3 my-4">
               <div className="px-2 me-2 gap-4 flex">
                 <div className="flex justify-between font-sans">
@@ -139,7 +138,7 @@ function EditPendingBookingHotelStatus() {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

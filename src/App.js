@@ -6,7 +6,7 @@ import Flight from "./pages/flights/Flights";
 import Hotels from "./pages/hotel/Hotels";
 import ProtectedRoute from "./routes/ProtectedRoute";
 import { selectUser } from "./redux/features/userSlice";
-import EditPendingBookingAirplaneStatus from "./components/profile/EditPendingBookingAirplaneStatus";
+import EditPendingBookingComboStatus from "./components/profile/EditPendingBookingComboStatus";
 import HomePage from "./pages/HomePage";
 import { useSelector, useDispatch } from "react-redux";
 import React, { useEffect } from "react";
@@ -94,7 +94,7 @@ function App() {
           <Route element={<ProtectedRoute isAllowed={user.user != null} />}>
             <Route path="/hotels" element={<Hotels />} />
           </Route> */}
-          <Route path="/:id" element={<EditPendingBookingAirplaneStatus />} />
+          <Route path="/:id" element={<EditPendingBookingComboStatus />} />
         </Routes>
       </BrowserRouter>
 

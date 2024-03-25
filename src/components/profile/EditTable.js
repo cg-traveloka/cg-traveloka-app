@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 function EditTable() {
   return (
     <div
-      className="edit-table left-content border-solid border-2 border-gray-200"
+      className="edit-table left-content h-fit rounded-lg border-solid border-2 border-gray-200"
       style={{ width: "300px" }}
     >
       <div className="gap-3 flex flex-col">
@@ -146,7 +146,7 @@ function EditTable() {
         </Link>
 
         <div
-          className="w-4/5 mt-2 ms-7"
+          className="w-4/5 mt-1 ms-6"
           style={{ borderTop: "2px solid #e3f0ff" }}
         ></div>
 
@@ -168,7 +168,7 @@ function EditTable() {
             fontFamily: "Arial",
           }}
         >
-          <div className="flex items-center content-center gap-2 ms-5 mb-5 h-7">
+          <div className="flex items-center content-center gap-2 ms-5 mb-3 h-7">
             <i
               className="fa-solid fa-power-off"
               style={{ color: "#0194f3" }}
