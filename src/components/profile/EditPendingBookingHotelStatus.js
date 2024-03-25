@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import EditTable from "./EditTable";
-import HotelIcon from "../icons/HotelIcon";
+import HotelIcon from "../icon/HotelIcon";
 import { useDispatch } from "react-redux";
 import axios from "../../config/privateAxios";
 import { useSelector } from "react-redux";
@@ -47,7 +47,6 @@ function EditPendingBookingHotelStatus() {
             >
               <div className="my-3">
                 <div className="px-2 flex">
-
                   <div className="flex gap-3">
                     <div className="border-l-2 border-s-cyan-600 border-solid -ms-2"></div>
                     <HotelIcon />

@@ -39,7 +39,7 @@ function EditTable() {
             fontFamily: "Arial",
           }}
         >
-          <div className="flex items-center content-center gap-1 ms-4 h-10">
+          <div className="flex items-center content-center gap-2 ms-4 h-10">
             <img
               src="https://d1785e74lyxkqq.cloudfront.net/_next/static/v2/8/825f4dbdd091e72c803ff3a24ca58c26.svg"
               alt=""
@@ -52,16 +52,16 @@ function EditTable() {
 
         <Link className="hover:bg-slate-200">
           <div
-            className="flex items-center content-center gap-2 ms-5 h-8"
+            className="flex items-center content-center gap-2 ms-4 h-8"
             style={{
               fontFamily: "Arial",
             }}
           >
-            <i
-              className="fa-regular fa-credit-card"
-              style={{ color: "#0194f3" }}
-            ></i>
-            <p className="whitespace-nowrap">Thẻ của tôi</p>
+            <img
+              src="https://d1785e74lyxkqq.cloudfront.net/_next/static/v2/f/f883d30731f5559aadffe0c6060fdded.svg"
+              alt="my-card"
+            />
+            <p className=" whitespace-nowrap">Thẻ của tôi</p>
           </div>
         </Link>
 
@@ -76,57 +76,12 @@ function EditTable() {
             fontFamily: "Arial",
           }}
         >
-          <div className="flex items-center content-center gap-2 ms-5 h-8">
-            <i
-              className="fa-solid fa-calendar-days"
-              style={{ color: "#0194f3" }}
-            ></i>
-            <p>Đặt chỗ của tôi</p>
-          </div>
-        </Link>
-
-        <Link
-          className="hover:bg-slate-200"
-          style={{
-            fontFamily: "Arial",
-          }}
-        >
-          <div className="flex items-center content-center gap-2 ms-5 h-8">
-            <i
-              className="fa-solid fa-clipboard-list"
-              style={{ color: "#0194f3" }}
-            ></i>
-            <p>Danh sách giao dịch</p>
-          </div>
-        </Link>
-
-        <Link
-          className="hover:bg-slate-200"
-          style={{
-            fontFamily: "Arial",
-          }}
-        >
-          <div className="flex items-center content-center gap-2 ms-5 h-8">
-            <i
-              className="fa-solid fa-bell fa-sm"
-              style={{ color: "#0194f3" }}
-            ></i>
-            <p>Thông báo giá vé máy bay</p>
-          </div>
-        </Link>
-
-        <Link
-          className="hover:bg-slate-200"
-          style={{
-            fontFamily: "Arial",
-          }}
-        >
-          <div className="flex items-center content-center gap-1 ms-4 h-8">
-            <i
-              className="fa-solid fa-user-group"
-              style={{ color: "#0194f3" }}
-            ></i>
-            <p>Thông tin hành khách đã lưu</p>
+          <div className="flex items-center content-center gap-2 ms-4 h-8">
+            <img
+              src="https://d1785e74lyxkqq.cloudfront.net/_next/static/v2/8/8c9954122d8006592fbcbd4a82ac994c.svg"
+              alt="booking-icon"
+            />
+            <p>Đặt khách sạn</p>
           </div>
         </Link>
 
@@ -137,11 +92,26 @@ function EditTable() {
           }}
         >
           <div className="flex items-center content-center gap-2 ms-4 h-8">
-            <i
-              className="fa-regular fa-envelope"
-              style={{ color: "#0194f3" }}
-            ></i>
-            <p>Khuyến mãi</p>
+            <img
+              src="https://d1785e74lyxkqq.cloudfront.net/_next/static/v2/8/8c9954122d8006592fbcbd4a82ac994c.svg"
+              alt="booking-icon"
+            />
+            <p>Đặt máy bay</p>
+          </div>
+        </Link>
+
+        <Link
+          className="hover:bg-slate-200"
+          style={{
+            fontFamily: "Arial",
+          }}
+        >
+          <div className="flex items-center content-center gap-2 ms-4 h-8">
+            <img
+              src="https://d1785e74lyxkqq.cloudfront.net/_next/static/v2/8/8c9954122d8006592fbcbd4a82ac994c.svg"
+              alt="booking-icon"
+            />
+            <p>Đặt combo</p>
           </div>
         </Link>
 
@@ -156,9 +126,12 @@ function EditTable() {
             fontFamily: "Arial",
           }}
         >
-          <div className="flex items-center content-center gap-2 ms-5 h-8">
-            <i className="fa-solid fa-gear" style={{ color: "#0194f3" }}></i>
-            <p>Tài khoản</p>
+          <div className="flex items-center content-center gap-1 ms-4 h-8">
+            <img
+              src="https://d1785e74lyxkqq.cloudfront.net/_next/static/v2/3/306886d7684a4b93b41b2726dabb61c7.svg"
+              alt="customer-icon"
+            />
+            <p>Thông tin hành khách đã lưu</p>
           </div>
         </Link>
 
@@ -168,11 +141,11 @@ function EditTable() {
             fontFamily: "Arial",
           }}
         >
-          <div className="flex items-center content-center gap-2 ms-5 mb-3 h-7">
-            <i
-              className="fa-solid fa-power-off"
-              style={{ color: "#0194f3" }}
-            ></i>
+          <div className="flex items-center content-center gap-1 ms-4 mb-3 h-7">
+            <img
+              src="https://d1785e74lyxkqq.cloudfront.net/_next/static/v2/3/336593031502efcd0f97e6b35e7703a1.svg"
+              alt="logOut-icon"
+            />
             <p> Đang đăng xuất</p>
           </div>
         </Link>

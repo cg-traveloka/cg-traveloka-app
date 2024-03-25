@@ -1,5 +1,5 @@
 import React from "react";
-import AirplaneIcon from "../icons/AirplaneIcon";
+import AirplaneIcon from "../icon/AirplaneIcon";
 import EditTable from "./EditTable";
 import { useDispatch } from "react-redux";
 import axios from "../../config/privateAxios";

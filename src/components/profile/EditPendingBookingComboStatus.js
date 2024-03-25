@@ -1,7 +1,7 @@
 import React from "react";
-import AirplaneIcon from "../icons/AirplaneIcon";
+import AirplaneIcon from "../icon/AirplaneIcon";
 import EditTable from "./EditTable";
-import HotelIcon from "../icons/HotelIcon";
+import HotelIcon from "../icon/HotelIcon";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import axios from "../../config/privateAxios";
@@ -15,7 +15,7 @@ function EditPendingBookingComboStatus() {
 
   useEffect(() => {
     axios
-      .get(`/api/combo/customer/${id}`)
+      .get(`/api/comboPending/customer/${id}`)
       .then((res) => {
         dispatch(setBooking(res.data));
       })
