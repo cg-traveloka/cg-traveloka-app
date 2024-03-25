@@ -5,9 +5,9 @@ import store from "../redux/app/store";
 
 export function SetPrivateAxiosRespon() {
     const interceptor = privateAxios.interceptors.response.use(
-        (response) => { console.log("RESPONE" + response); return response },
+        (response) => { return response },
         (error) => {
-            console.log(error.response.data.status);
+            // console.log(error.response.data.status);
             // Reject promise if usual error
             if (error.response.data.status !== 401 && error.response.data.status !== 403) {
                 return Promise.reject(error);
@@ -29,7 +29,6 @@ export function SetPrivateAxiosRespon() {
                 // }
                 )
                 .then((response) => {
-
                     saveUser(response.data);
                     error.response.config.headers["Authorization"] =
                         "Bearer " + response.data.access_token;
@@ -38,7 +37,7 @@ export function SetPrivateAxiosRespon() {
                     return privateAxios(error.response.config);
                 })
                 .catch((error2) => {
-                    console.log("error2:" + error2);
+                    // console.log("error2:" + error2);
                     // Retry failed, clean up and reject the promise
                     store.dispatch(removeUser());
                     return Promise.reject(error2);
@@ -51,7 +50,7 @@ export function SetPrivateAxiosRespon() {
 export function SetPrivateAxiosRequest() {
     privateAxios.interceptors.request.use(
         config => {
-            console.log('Request:', config)
+            // console.log('Request:', config)
             let user = JSON.parse(localStorage.getItem("user"));
             if (user != null) {
                 const token = user.token;
