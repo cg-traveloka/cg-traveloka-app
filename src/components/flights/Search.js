@@ -8,7 +8,10 @@ import {
   selectSearchParams,
   selectSearchResults,
   selectSeatTypes,
+  setAirPlaneSearchDTO,
   setError,
+  setFlightDetailsDTO,
+  setFlightInForShortDescriptions,
   setSearchParams,
   setSearchResults,
 } from "../../redux/features/flightSlice";
@@ -70,13 +73,27 @@ function Search() {
         },
       });
       console.log(response.data);
-      await dispatch(setSearchResults(response.data));
-      console.log("Search Results", JSON.stringify(searchResults));
+      if (
+        response.data &&
+        Array.isArray(response.data.flightDetailsDTO) &&
+        Array.isArray(response.data.airPlantSearchDTO) &&
+        Array.isArray(response.data.flightInForShortDescriptions)
+      ) {
+        dispatch(setFlightDetailsDTO(response.data.flightDetailsDTO));
+        dispatch(setAirPlaneSearchDTO(response.data.airPlantSearchDTO));
+        dispatch(
+          setFlightInForShortDescriptions(response.flightInForShortDescriptions)
+        );
+      } else {
+        console.error("API response does not contain the required arrays");
+      }
+      console.log("Search Results", JSON.stringify(response.data));
       navigate("/test2");
     } catch (error) {
       dispatch(setError(error.message));
     }
   };
+
   useEffect(() => {
     searchFlights();
   }, []);

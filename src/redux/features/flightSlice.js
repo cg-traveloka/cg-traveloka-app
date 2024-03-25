@@ -20,6 +20,10 @@ const initialState = {
     page: 0,
   },
   searchResults: [],
+  flightDetailsDTO: [],
+  airPlantSearchDTO: [],
+  flightInForShortDescriptions: [],
+
   flightInformation: null,
 };
 
@@ -43,7 +47,16 @@ export const flightSlice = createSlice({
       state.searchResults = action.payload;
     },
     setFlightInformation: (state, action) => {
-      state.flightInformation = action.payload; 
+      state.flightInformation = action.payload;
+    },
+    setFlightDetailsDTO: (state, action) => {
+      state.flightDetailsDTO = action.payload;
+    },
+    setAirPlaneSearchDTO: (state, action) => {
+      state.airPlantSearchDTO = action.payload;
+    },
+    setFlightInForShortDescriptions: (state, action) => {
+      state.flightInForShortDescriptions = action.payload;
     },
   },
 });
@@ -54,6 +67,9 @@ export const {
   setSearchParams,
   setSearchResults,
   setFlightInformation,
+  setFlightDetailsDTO,
+  setAirPlaneSearchDTO,
+  setFlightInForShortDescriptions,
 } = flightSlice.actions;
 
 export const selectAirPortLocations = (state) => state.flight.airPortLocations;
@@ -63,4 +79,9 @@ export const selectSearchParams = (state) => state.flight.searchParams;
 export const selectSearchResults = (state) => state.flight.searchResults;
 export const selectFlightInformation = (state) =>
   state.flight.flightInformation;
+export const selectFlightDetailsDTO = (state) => state.flight.flightDetailsDTO;
+export const selectAirPlaneSearchDTO = (state) =>
+  state.flight.airPlantSearchDTO;
+export const selectFlightInforShortDescriptions = (state) =>
+  state.flight.flightInForShortDescriptions;
 export default flightSlice.reducer;

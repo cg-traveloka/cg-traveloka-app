@@ -18,7 +18,6 @@ import FlightFilter from "./components/flight-search/flightFilter";
 import FlightSearch from "./pages/FlightSearch";
 import Flight from "./pages/flights/Flights";
 import FlightTera from "./pages/FightTera";
-import Test from "./components/flights/test";
 
 Modal.setAppElement("#root");
 
@@ -100,7 +99,6 @@ function App() {
             <Route path="/hotels" element={<Hotels />} />
           </Route>
           <Route path="/test" element={<Flight />} />
-          <Route path="/test2" element={<Test />} />
         </Routes>
       </BrowserRouter>
 
