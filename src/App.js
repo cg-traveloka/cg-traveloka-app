@@ -6,7 +6,7 @@ import Flight from "./pages/flights/Flights";
 import Hotels from "./pages/hotel/Hotels";
 import ProtectedRoute from "./routes/ProtectedRoute";
 import { selectUser } from "./redux/features/userSlice";
-import EditPendingBookingComboStatus from "./components/profile/EditPendingBookingComboStatus";
+import EditPendingBookingHotelStatus from "./components/profile/EditPendingBookingHotelStatus";
 import HomePage from "./pages/HomePage";
 import { useSelector, useDispatch } from "react-redux";
 import React, { useEffect } from "react";
@@ -14,6 +14,7 @@ import Modal from "react-modal";
 import { selectModal, setModalIsOpen } from "./redux/features/modalSlice";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import EditPendingBookingComboStatus from "./components/profile/EditPendingBookingComboStatus";
 
 Modal.setAppElement("#root");
 
@@ -94,7 +95,7 @@ function App() {
           <Route element={<ProtectedRoute isAllowed={user.user != null} />}>
             <Route path="/hotels" element={<Hotels />} />
           </Route> */}
-          <Route path="/:id" element={<EditPendingBookingComboStatus />} />
+          <Route path="/:id" element={<EditPendingBookingHotelStatus />} />
         </Routes>
       </BrowserRouter>
 
