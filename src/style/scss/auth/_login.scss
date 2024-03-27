@@ -5,12 +5,12 @@ $font-app: "Roboto", "Arial", sans-serif;
 .flexbox {
   background-color: #235d9f;
   font-family: $font-app;
-
+  padding: 46px;
   .container {
     background-color: #fff;
     border-radius: 6px;
     padding: 0;
-    max-width: 380px;
+    max-width: 500px;
     margin: auto;
     .card {
       border: none;
