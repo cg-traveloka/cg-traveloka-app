@@ -15,6 +15,9 @@ import { selectModal, setModalIsOpen } from "./redux/features/modalSlice";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import EditPendingBookingComboStatus from "./components/profile/EditPendingBookingComboStatus";
+import FlightTera from "./pages/tera/FlightTera";
+import HotelTera from "./pages/tera/HotelTera";
+import RoomTera from "./pages/tera/RoomTera";
 
 Modal.setAppElement("#root");
 
@@ -90,11 +93,14 @@ function App() {
 
       <BrowserRouter>
         <Routes>
-          {/* <Route path="/" element={<Login />} />
+          <Route path="/" element={<Login />} />
           <Route path="/*" element={<AuthRoutes />} />
-          <Route element={<ProtectedRoute isAllowed={user.user != null} />}>
-            <Route path="/hotels" element={<Hotels />} />
-          </Route> */}
+          {/* <Route element={<ProtectedRoute isAllowed={user.user != null} />}> */}
+          {/* <Route path="/hotels" element={<Hotels />} /> */}
+          {/* </Route> */}
+          <Route path="/tera/flight" element={<FlightTera />} />
+          <Route path="/tera/hotel" element={<HotelTera />} />
+          <Route path="/tera/room" element={<RoomTera />} />
           <Route path="/:id" element={<EditPendingBookingHotelStatus />} />
         </Routes>
       </BrowserRouter>
