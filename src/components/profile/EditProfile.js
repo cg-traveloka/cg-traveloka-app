@@ -24,7 +24,7 @@ function EditProfile() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`/api/customers/${id}`);
+        const response = await axios.get(`/api/customers`);
         dispatch(getCustomer(response.data));
         setFormData(response.data);
       } catch (error) {
@@ -39,14 +39,12 @@ function EditProfile() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
   return (
-    <div className="edit-profile mx-auto w-4/5">
+    <div className="edit-profile mx-auto w-3/5 mt-5">
       <div className="flex gap 5">
-        <div className="right-content w-full pl-6">
+        <EditTable />
+        <div className="right-content w-4/5 pl-5">
           <div className="flex flex-col justify-between pb-4">
-            <h1 className="font-bold text-2xl mt-2">Danh sách hành khách</h1>
-            <p className="font-medium mt-3">
-              Bạn có thể lưu tối đa thông tin 20 hành khách
-            </p>
+            <h1 className="font-bold text-2xl mt-2">Dữ liệu cá nhân</h1>
           </div>
           <form>
             <div className="mt-2 bg-gray rounded-lg border-solid border-2 border-gray-200">
@@ -66,11 +64,11 @@ function EditProfile() {
                 </div>
 
                 <div className="mt-5 px-2 flex">
-                  <div class="w-full sm:w-1/3">
-                    <div class="mb-5">
+                  <div className="w-full sm:w-1/3">
+                    <div className="mb-5">
                       <label
-                        for="gender"
-                        class="mb-3 block text-base font-medium text-[#07074D]"
+                        htmlFor="gender"
+                        className="mb-3 block text-base font-medium text-[#07074D]"
                       >
                         Giới tính
                       </label>
@@ -80,16 +78,16 @@ function EditProfile() {
                         value={formData.gender}
                         onChange={handleChange}
                         id="gender"
-                        class="shadow w-full rounded-md border py-2 px-3 text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                        className="shadow w-full rounded-md border py-2 px-3 text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                       />
                     </div>
                   </div>
 
-                  <div class="w-full px-3 sm:w-1/4">
-                    <div class="mb-5">
+                  <div className="w-full px-3 sm:w-1/4">
+                    <div className="mb-5">
                       <label
-                        for="lName"
-                        class="mb-3 block text-base font-medium text-[#07074D]"
+                        htmlFor="lName"
+                        className="mb-3 block text-base font-medium text-[#07074D]"
                       >
                         Ngày sinh
                       </label>
@@ -100,33 +98,33 @@ function EditProfile() {
                         id="lName"
                         value={formData.date}
                         onChange={handleChange}
-                        class="shadow w-full rounded-md border py-2 px-3 text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                        className="shadow w-full rounded-md border py-2 px-3 text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                       />
                     </div>
                   </div>
 
-                  <div class="w-full px-3 sm:w-1/4">
-                    <div class="mt-9">
+                  <div className="w-full px-3 sm:w-1/4">
+                    <div className="mt-9">
                       <input
                         type="text"
                         name="month"
                         id="lName"
                         value={formData.month}
                         onChange={handleChange}
-                        class="shadow w-full rounded-md border py-2 px-3 text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                        className="shadow w-full rounded-md border py-2 px-3 text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                       />
                     </div>
                   </div>
 
-                  <div class="w-full px-3 sm:w-1/4">
-                    <div class="mt-9">
+                  <div className="w-full px-3 sm:w-1/4">
+                    <div className="mt-9">
                       <input
                         type="text"
                         name="year"
                         id="lName"
                         value={formData.year}
                         onChange={handleChange}
-                        class="shadow w-full rounded-md border py-2 px-3 text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                        className="shadow w-full rounded-md border py-2 px-3 text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                       />
                     </div>
                   </div>
@@ -137,14 +135,14 @@ function EditProfile() {
                 <div className="mt-5 me-5 flex justify-end items-center gap-5">
                   <button
                     type="button"
-                    class="text-lg rounded-md text-sky-600 font-bold leading-6 px-3 py-2 bg-gray-100 hover:bg-gray-200"
+                    className="text-lg rounded-md text-sky-600 font-bold leading-6 px-3 py-2 bg-gray-100 hover:bg-gray-200"
                   >
                     Huỷ
                   </button>
 
                   <button
                     type="submit"
-                    class="rounded-md bg-sky-600 px-3 py-2 text-lg font-bold text-white shadow-md hover:bg-blue-500 "
+                    className="rounded-md bg-sky-600 px-3 py-2 text-lg font-bold text-white shadow-md hover:bg-blue-500 "
                   >
                     Lưu
                   </button>

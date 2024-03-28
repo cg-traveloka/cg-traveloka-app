@@ -27,6 +27,7 @@ const initialState = {
   toAirportLocationName: "Thành phố Hà Nội - HAN",
   flightInformation: null,
   seatTypeName: "phổ thông",
+  airPlantSearchDTO:[]
 };
 
 export const flightSlice = createSlice({

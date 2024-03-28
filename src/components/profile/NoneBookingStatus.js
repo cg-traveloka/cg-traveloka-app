@@ -1,7 +1,7 @@
 import React from "react";
 import EditTable from "./EditTable";
 
-function EditNoneBookingStatus() {
+function NoneBookingStatus() {
   return (
     <div className="edit-booking-hotel mx-auto my-auto w-8/12 pt-5">
       <div className="flex">
@@ -33,31 +33,10 @@ function EditNoneBookingStatus() {
               </div>
             </div>
           </div>
-
-          <h1 className="font-bold text-2xl mt-7">Lịch sử giao dịch</h1>
-
-          <div className="mt-2 shadow-md bg-gray rounded-lg border-solid border-2 border-gray-200">
-            <div className="ms-3 my-4">
-              <div className="px-2 me-2 gap-4 flex">
-                <div className="flex justify-between">
-                  <p className="mb-1 font-semibold text-base">
-                    Xem
-                    <button
-                      type="submit"
-                      className="ms-1 font-bold text-blue-500"
-                    >
-                      Lịch sử giao dịch
-                    </button>
-                  </p>
-                  <p className="mb-1 ms-1 font-semibold text-base">của bạn</p>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </div>
   );
 }
 
-export default EditNoneBookingStatus;
+export default NoneBookingStatus;

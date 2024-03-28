@@ -4,26 +4,26 @@ import EditTable from "./EditTable";
 import { useDispatch } from "react-redux";
 import axios from "../../config/privateAxios";
 import { useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useEffect } from "react";
 import {
   setBookingBooked,
   setBookingPending,
 } from "../../redux/features/bookingSlice";
 
-function EditPendingBookingHotelStatus() {
+function ListBookingHotelStatus() {
   const dispatch = useDispatch();
-  const { id } = useParams();
   const [hasBooked, setHasBooked] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios
-      .get(`/api/contractPending/customer/${id}`)
+      .get("/api/contractPending")
       .then((res) => {
         console.log(res.data);
         dispatch(setBookingPending(res.data));
 
-        return axios.get(`/api/contractBooked/customer/${id}`);
+        return axios.get("/api/contractBooked");
       })
       .then((res) => {
         if (res.data && res.data.length > 0) {
@@ -37,6 +37,10 @@ function EditPendingBookingHotelStatus() {
         console.log(err);
       });
   }, [dispatch]);
+
+  function handleReview(contractId) {
+    navigate(`/review/${contractId}`);
+  }
 
   const hotelName = useSelector((state) => state.booking.hotelName);
   const status = useSelector((state) => state.booking.status);
@@ -60,7 +64,7 @@ function EditPendingBookingHotelStatus() {
 
           {bookingPending.map((booking, index) => (
             <div
-              className="mt-5 shadow-md bg-gray rounded-lg border-solid border-2 border-gray-200 font-sans"
+              className="mt-5 mb-5 shadow-md bg-gray rounded-lg border-solid border-2 border-gray-200 font-sans"
               key={index}
             >
               <div className="my-3">
@@ -79,7 +83,7 @@ function EditPendingBookingHotelStatus() {
                       backgroundColor: "rgba(1,148,243,1.00)",
                     }}
                   >
-                    <p className="text-center">{booking.status}</p>
+                    <p className="text-center py-0.5">{booking.status}</p>
                   </div>
 
                   <div
@@ -114,7 +118,7 @@ function EditPendingBookingHotelStatus() {
             <div>
               {bookingBooked?.map((booking, index) => (
                 <div
-                  className="mt-5 shadow-md bg-gray rounded-lg border-solid border-2 border-gray-200 font-sans"
+                  className="mt-5 mb-6 shadow-md bg-gray rounded-lg border-solid border-2 border-gray-200 font-sans"
                   key={index}
                 >
                   <div className="px-2 flex py-3">
@@ -129,12 +133,27 @@ function EditPendingBookingHotelStatus() {
 
                   <div className="flex justify-between">
                     <div
-                      className="mt-1 mb-5 ms-3 w-40 rounded-full text-white text-sm font-medium"
+                      className="mt-1 mb-5 ms-3 w-32 rounded-full text-white text-sm font-medium"
                       style={{
                         backgroundColor: "rgb(0, 163, 83)",
                       }}
                     >
                       <p className="text-center py-0.5">{booking.status}</p>
+                    </div>
+
+                    <div
+                      className="mt-1 mb-5 me-80 w-28 rounded-full text-white text-sm font-medium"
+                      style={{
+                        backgroundColor: "rgb(103, 8, 252)",
+                      }}
+                    >
+                      <div
+                        onClick={(event) => handleReview(event.target.id)}
+                        id={booking.contractId}
+                        className="text-center py-0.5 cursor-pointer"
+                      >
+                        Đánh giá
+                      </div>
                     </div>
 
                     <div
@@ -171,7 +190,7 @@ function EditPendingBookingHotelStatus() {
 
                   <div className="flex flex-col justify-between ms-2">
                     <h3 className="mt-2 font-bold text-lg">
-                      Không tìm danh sách đặt chỗ
+                      Không tìm thấy danh sách đặt chỗ
                     </h3>
                     <p className="mb-5 text-base">
                       Mọi chỗ bạn đặt sẽ được hiển thị tại đây. Hiện bạn chưa có
@@ -182,12 +201,12 @@ function EditPendingBookingHotelStatus() {
               </div>
             </div>
           )}
-
+          {/* 
           <h1 className="font-bold text-2xl mt-7 font-sans">
             Lịch sử giao dịch
-          </h1>
+          </h1> */}
 
-          <div className="mt-5 mb-16 shadow-sm bg-gray rounded-lg border-solid border-2 border-gray-200">
+          {/* <div className="mt-5 mb-16 shadow-sm bg-gray rounded-lg border-solid border-2 border-gray-200">
             <div className="ms-3 my-4">
               <div className="px-2 me-2 gap-4 flex">
                 <div className="flex justify-between font-sans">
@@ -207,11 +226,11 @@ function EditPendingBookingHotelStatus() {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
   );
 }
 
-export default EditPendingBookingHotelStatus;
+export default ListBookingHotelStatus;

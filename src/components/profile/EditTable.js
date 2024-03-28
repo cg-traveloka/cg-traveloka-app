@@ -1,5 +1,7 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import HotelIcon from "../icon/HotelIcon";
+import AirplaneIcon from "../icon/AirplaneIcon";
 
 function EditTable() {
   return (
@@ -33,8 +35,11 @@ function EditTable() {
 
         <hr />
 
-        <Link
-          className="hover:bg-slate-200"
+        <NavLink
+          to="/mybonus"
+          className={({ isActive }) =>
+            isActive ? "bg-sky-400 text-slate-100" : "hover:bg-slate-200"
+          }
           style={{
             fontFamily: "Arial",
           }}
@@ -48,92 +53,88 @@ function EditTable() {
             />
             <p className="whitespace-nowrap">Điểm thưởng của tôi</p>
           </div>
-        </Link>
-
-        <Link className="hover:bg-slate-200">
-          <div
-            className="flex items-center content-center gap-2 ms-4 h-8"
-            style={{
-              fontFamily: "Arial",
-            }}
-          >
-            <img
-              src="https://d1785e74lyxkqq.cloudfront.net/_next/static/v2/f/f883d30731f5559aadffe0c6060fdded.svg"
-              alt="my-card"
-            />
-            <p className=" whitespace-nowrap">Thẻ của tôi</p>
-          </div>
-        </Link>
+        </NavLink>
 
         <div
-          className="w-4/5 mt-2 ms-7"
+          className="w-4/5 ms-7"
           style={{ borderTop: "2px solid #e3f0ff" }}
         ></div>
 
-        <Link
-          className="hover:bg-slate-200"
+        <NavLink
+          to="/bookinghotel"
+          className={({ isActive }) =>
+            isActive ? "bg-sky-400 text-slate-100" : "hover:bg-slate-200"
+          }
           style={{
             fontFamily: "Arial",
           }}
         >
-          <div className="flex items-center content-center gap-2 ms-4 h-8">
-            <img
-              src="https://d1785e74lyxkqq.cloudfront.net/_next/static/v2/8/8c9954122d8006592fbcbd4a82ac994c.svg"
-              alt="booking-icon"
-            />
-            <p>Đặt khách sạn</p>
+          <div className="flex items-center content-center gap-3.5 ms-4 h-8">
+            <HotelIcon />
+            <div>Đặt khách sạn</div>
           </div>
-        </Link>
+        </NavLink>
 
-        <Link
-          className="hover:bg-slate-200"
+        <NavLink
+          to="/bookingTicket"
+          className={({ isActive }) =>
+            isActive ? "bg-sky-400 text-slate-100" : "hover:bg-slate-200"
+          }
           style={{
             fontFamily: "Arial",
           }}
         >
-          <div className="flex items-center content-center gap-2 ms-4 h-8">
-            <img
-              src="https://d1785e74lyxkqq.cloudfront.net/_next/static/v2/8/8c9954122d8006592fbcbd4a82ac994c.svg"
-              alt="booking-icon"
-            />
+          <div className="flex items-center content-center gap-3.5 ms-4 h-8">
+            <AirplaneIcon />
             <p>Đặt máy bay</p>
           </div>
-        </Link>
+        </NavLink>
 
-        <Link
-          className="hover:bg-slate-200"
+        <NavLink
+          to="/bookingCombo"
+          className={({ isActive }) =>
+            isActive ? "bg-sky-400 text-slate-100" : "hover:bg-slate-200"
+          }
           style={{
             fontFamily: "Arial",
           }}
         >
           <div className="flex items-center content-center gap-2 ms-4 h-8">
             <img
-              src="https://d1785e74lyxkqq.cloudfront.net/_next/static/v2/8/8c9954122d8006592fbcbd4a82ac994c.svg"
-              alt="booking-icon"
+              importance="low"
+              loading="lazy"
+              src="https://ik.imagekit.io/tvlk/image/imageResource/2017/11/23/1511416848403-0f73dda9b166e07508c3b4557569b43b.png?tr=q-75,w-24"
+              srcSet="https://ik.imagekit.io/tvlk/image/imageResource/2017/11/23/1511416848403-0f73dda9b166e07508c3b4557569b43b.png?tr=q-75,w-24 1x, https://ik.imagekit.io/tvlk/image/imageResource/2017/11/23/1511416821839-8752dc371576af3bdebdbbb09ffdc7a6.png?tr=dpr-2,q-75,w-24 2x, https://ik.imagekit.io/tvlk/image/imageResource/2017/11/23/1511416821839-8752dc371576af3bdebdbbb09ffdc7a6.png?tr=dpr-3,q-75,w-24 3x"
+              decoding="async"
+              width="24"
+              alt="airplane & city icon"
             />
             <p>Đặt combo</p>
           </div>
-        </Link>
+        </NavLink>
 
         <div
           className="w-4/5 mt-1 ms-6"
           style={{ borderTop: "2px solid #e3f0ff" }}
         ></div>
 
-        <Link
-          className="hover:bg-slate-200"
+        <NavLink
+          to="/profile"
+          className={({ isActive }) =>
+            isActive ? "bg-sky-400 text-slate-100" : "hover:bg-slate-200"
+          }
           style={{
             fontFamily: "Arial",
           }}
         >
-          <div className="flex items-center content-center gap-1 ms-4 h-8">
+          <div className="flex items-center content-center gap-2.5 ms-3 h-8">
             <img
               src="https://d1785e74lyxkqq.cloudfront.net/_next/static/v2/3/306886d7684a4b93b41b2726dabb61c7.svg"
               alt="customer-icon"
             />
-            <p>Thông tin hành khách đã lưu</p>
+            <p>Chỉnh sửa hồ sơ</p>
           </div>
-        </Link>
+        </NavLink>
 
         <Link
           className="hover:bg-slate-200"
@@ -141,12 +142,12 @@ function EditTable() {
             fontFamily: "Arial",
           }}
         >
-          <div className="flex items-center content-center gap-1 ms-4 mb-3 h-7">
+          <div className="flex items-center content-center gap-2.5 ms-3 mb-3 h-7">
             <img
               src="https://d1785e74lyxkqq.cloudfront.net/_next/static/v2/3/336593031502efcd0f97e6b35e7703a1.svg"
               alt="logOut-icon"
             />
-            <p> Đang đăng xuất</p>
+            <p>Đăng xuất</p>
           </div>
         </Link>
       </div>

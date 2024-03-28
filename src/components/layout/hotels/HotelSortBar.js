@@ -12,7 +12,7 @@ function HotelSortBar(params) {
         dispatch(changePageNumber(0))
         axios.post("/api/search/hotels", {
             ...hotel,
-            pageNumber:0,
+            pageNumber: 0,
             sort: event.target.value
         })
             .then((result) => dispatch(changeHotels(result.data.hotels)))

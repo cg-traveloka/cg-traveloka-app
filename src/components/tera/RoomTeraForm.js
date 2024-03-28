@@ -92,8 +92,8 @@ function RoomTeraForm({ sendSubmitStatus }) {
       .min(1, "Giá phải lớn hơn 0"),
     unitPriceSell: Yup.number()
       .required("Giá không được để trống")
-      .test("is-required", "Giá bán phải lớn hơn giá gốc", (value) => {
-        return value > form.unitPriceOrigin;
+      .test("is-required", "Giá bán phải nhỏ hơn giá gốc", (value) => {
+        return value < form.unitPriceOrigin;
       }),
     maxPerson: Yup.number()
       .required("Số người tối đa không được để trống")
