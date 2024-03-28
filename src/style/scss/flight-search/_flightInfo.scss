@@ -7,10 +7,10 @@ $blue-color: #4299e1;
   }
 }
 .flight-search-info {
+  width: 90%;
   @include hover-translate-up;
   border: 2px solid transparent;
   transition: border-color 0.3s ease;
-
   &:hover {
     border-color: $blue-color;
   }

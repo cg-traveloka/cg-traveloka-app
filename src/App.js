@@ -14,8 +14,15 @@ import Modal from "react-modal";
 import { selectModal, setModalIsOpen } from "./redux/features/modalSlice";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
+import FlightTitle from "./components/flight-search/FlightTitle";
+import Search from "./components/flights/Search";
+import FlightFilter from "./components/flight-search/flightFilter";
+import FlightSearch from "./pages/FlightSearch";
+import FlightTera from "./pages/FightTera";
+import ComboDiscovery from "./components/hompage/ComboDiscovery";
+import SeatDetailPage from "./components/flight-search/SeatDetailPage";
 import EditPendingBookingComboStatus from "./components/profile/EditPendingBookingComboStatus";
-import FlightTera from "./pages/tera/FlightTera";
 import HotelTera from "./pages/tera/HotelTera";
 import RoomTera from "./pages/tera/RoomTera";
 
@@ -95,6 +102,13 @@ function App() {
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/*" element={<AuthRoutes />} />
+          <Route element={<ProtectedRoute isAllowed={user.user != null} />}>
+            <Route path="/hotels" element={<Hotels />} />
+          </Route>
+          <Route path="/flight-search" element={<FlightSearch />} />
+          <Route path="/search" element={<Flight />} />
+          <Route path="/home" element={<HomePage />} />
+          <Route path="/home1" element={<SeatDetailPage />} />
           {/* <Route element={<ProtectedRoute isAllowed={user.user != null} />}> */}
           {/* <Route path="/hotels" element={<Hotels />} /> */}
           {/* </Route> */}
