@@ -2,7 +2,7 @@ import PersonSmallIcon from "../../icon/PersonSmallIcon";
 import TravelokaIcon from "../../icon/TravelokaIcon";
 import YellowStar from "../../icon/YellowStar";
 import BillIcon from "../../icon/BillIcon";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { selectHotel } from "../../../redux/features/hotelSlice";
@@ -18,6 +18,7 @@ function RoomContractPreview(params) {
     var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
     const [date, setDate] = useState(new Date());
     const [endDate, setEndDate] = useState(new Date());
+    const navigate = useNavigate();
 
     useEffect(() => {
         axios.get(`/api/room/${id}`)
@@ -40,7 +41,7 @@ function RoomContractPreview(params) {
         let date = hotel.startDate;
         let dateList = date.split("-");
         console.log(date);
-        let temporature = new Date(dateList[0], dateList[1]-1, dateList[2]);
+        let temporature = new Date(dateList[0], dateList[1] - 1, dateList[2]);
         console.log(temporature);
         setDate(temporature);
         let temporature2 = new Date();
@@ -56,6 +57,7 @@ function RoomContractPreview(params) {
         }).then(result => { toast.success("Hợp đồng thuê phòng tạo thành công") })
             .catch(error => { console.log(error); toast.error("Có lỗi xảy ra") });
     }
+    
     return (
         <div className="roomContractPreview">
             <div className="roomContractPreview-container">

@@ -4,10 +4,12 @@ import HotelFilterStarChecked from "./HotelFilterStarChecked";
 
 function HotelFilterSideBar(params) {
     return (
-        <div className="hotelFilterSideBar-container">
+        <div className="hotelFilterSideBar">
+            <div className="hotelFilterSideBar-container">
             <HotelFilterBanner />
             <HotelFilterMoneyRange />
             <HotelFilterStarChecked />
+            </div>
         </div>
     )
 }

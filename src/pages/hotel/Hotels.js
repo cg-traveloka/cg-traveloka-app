@@ -8,6 +8,7 @@ import { changeHotels, selectHotels, addHotels } from "../../redux/features/hote
 import { useDispatch, useSelector } from "react-redux";
 import { changePageNumber, selectHotel } from "../../redux/features/hotelSlice";
 import { useParams } from "react-router-dom";
+import Header from "../../components/hompage/Header";
 
 function Hotels(params) {
     const hotel = useSelector(selectHotel);
@@ -24,25 +25,30 @@ function Hotels(params) {
         axios.post("/api/search/hotels", { ...hotel, pageNumber: hotel.pageNumber + 1 }).then(
             result => dispatch(addHotels(result.data.hotels))
         ).catch();
-        dispatch(changePageNumber(hotel.pageNumber+1));
+        dispatch(changePageNumber(hotel.pageNumber + 1));
     }
 
     return (
-        <div className="hotels">
-            <HotelSearchBar />
-            <div className="hotels-container">
-                <HotelFilterSideBar />
-                <div className="hotels-body">
-                    <HotelSortBar />
-                    <div className="hotels-list">
-                        {hotels.map((hotel) =>
-                            <HotelCard key={hotel.id} hotel={hotel} />
-                        )}
+        <>  
+        <div className="hotelHeader">
+                <Header />
+        </div>
+            <div className="hotels">
+                <HotelSearchBar />
+                <div className="hotels-container">
+                    <HotelFilterSideBar />
+                    <div className="hotels-body">
+                        <HotelSortBar />
+                        <div className="hotels-list">
+                            {hotels.map((hotel) =>
+                                <HotelCard key={hotel.id} hotel={hotel} />
+                            )}
+                        </div>
+                        <button onClick={handleLoadMore}>Xem thêm</button>
                     </div>
-                    <button onClick={handleLoadMore}>Xem thêm</button>
                 </div>
             </div>
-        </div>
-  );
+        </>
+    );
 }
 export default Hotels;
