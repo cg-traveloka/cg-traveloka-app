@@ -16,7 +16,16 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import HotelInfo from "./pages/hotel/HotelInfo";
 import RoomContractPreview from "./components/layout/hotels/RoomContractPreview";
+import FlightTitle from "./components/flight-search/FlightTitle";
+import Search from "./components/flights/Search";
+import FlightFilter from "./components/flight-search/flightFilter";
+import FlightSearch from "./pages/FlightSearch";
+import FlightTera from "./pages/FightTera";
+import ComboDiscovery from "./components/hompage/ComboDiscovery";
+import SeatDetailPage from "./components/flight-search/SeatDetailPage";
 import EditPendingBookingComboStatus from "./components/profile/EditPendingBookingComboStatus";
+import HotelTera from "./pages/tera/HotelTera";
+import RoomTera from "./pages/tera/RoomTera";
 
 Modal.setAppElement("#root");
 
@@ -98,7 +107,14 @@ function App() {
             <Route path="/hotels/:id" element={<HotelInfo />} />
             <Route path="/hotels/booking/:id" element={<RoomContractPreview />} />
           </Route>
-          <Route path="/:id" element={<EditPendingBookingHotelStatus />} />
+          <Route path="/flight-search" element={<FlightSearch />} />
+          <Route path="/search" element={<Flight />} />
+          <Route path="/home" element={<HomePage />} />
+          <Route path="/home1" element={<SeatDetailPage />} />
+          <Route path="/tera/flight" element={<FlightTera />} />
+          <Route path="/tera/hotel" element={<HotelTera />} />
+          <Route path="/tera/room" element={<RoomTera />} />
+          <Route path="/user/booking/:id" element={<EditPendingBookingHotelStatus />} />
         </Routes>
       </BrowserRouter>
 

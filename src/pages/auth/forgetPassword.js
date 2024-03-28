@@ -11,9 +11,7 @@ function ForgetPass() {
 
   const checkEmail = async () => {
     try {
-      const checkResponse = await axios.post(
-        '/register/check/email',
-        email);
+      const checkResponse = await axios.post("/register/check/email", email);
 
       if (checkResponse.status === 200) {
         setError("");
@@ -28,10 +26,7 @@ function ForgetPass() {
 
   const sendCode = async () => {
     try {
-      const sendCodeResponse = await axios.post(
-        '/forgetPass/sendCode',
-        email
-      );
+      const sendCodeResponse = await axios.post("/forgetPass/sendCode", email);
       localStorage.setItem("email", email);
 
       navigate("/forget-pass-validate-code");
@@ -60,15 +55,20 @@ function ForgetPass() {
             </p>
             <div className="reg-form">
               <span className="form-label">Email</span>
-              <i className="fa fa-envelope icon"></i>
-              <input
-                type="text"
-                name="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                onBlur={checkEmail}
-                placeholder="Nhập email của bạn ở đây"
-              ></input>
+              <div style={{ position: "relative" }}>
+                <input
+                  type="text"
+                  name="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  onBlur={checkEmail}
+                  placeholder="Nhập email của bạn ở đây"
+                ></input>
+                <img
+                  src="https://icon-library.com/images/email-icon-vector-png/email-icon-vector-png-14.jpg"
+                  className="absolute left-2 top-1/2 transform -translate-y-1/2 w-5 h-5"
+                />
+              </div>
               <p className="error-message">{error}</p>
 
               <button

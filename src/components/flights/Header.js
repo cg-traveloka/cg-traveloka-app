@@ -38,8 +38,8 @@ function Header() {
             </div>
           </div>
         </div>
-        <div class="header-nav">
-          <div class="header-nav-container">
+        <div className="header-nav">
+          <div className="header-nav-container">
             <Link href="#">
               <p>Khách sạn</p>
             </Link>

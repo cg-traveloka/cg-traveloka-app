@@ -36,15 +36,6 @@ function Login() {
         password: formData.password,
       });
 
-      await axios.post("/login/account", data).then((result) => {
-        dispatch(saveUser(result.data));
-        console.log(result.data);
-        dispatch(setModalMessage("Đăng nhập thành công"));
-        dispatch(setModalStatus("sucess"));
-        dispatch(setModalIsOpen(true));
-        toast.success("Đăng nhập thành công");
-        // navigate("/hotels");
-      });
       await axios.post('/login/account', data)
         .then(result => {
           dispatch(saveUser(result.data));
@@ -82,26 +73,35 @@ function Login() {
             <form onSubmit={handleSubmit}>
               <div className="login-form">
                 <span className="form-label">Email/Số điện thoại di động</span>
-                <i className="fa fa-envelope icon"></i>
-                <input
-                  className="form-input"
-                  type="text"
-                  name="username"
-                  value={formData.username}
-                  onChange={handleChangeInput}
-                  placeholder="Điền email hoặc số điện thoại"
-                ></input>
+                <div className="relative">
+                  <input
+                    className="form-input pl-10"
+                    type="text"
+                    name="username"
+                    value={formData.username}
+                    onChange={handleChangeInput}
+                    placeholder="Điền email hoặc số điện thoại của bạn ở đây"
+                  ></input>
+                  <img
+                    src="https://icon-library.com/images/email-icon-vector-png/email-icon-vector-png-14.jpg"
+                    className="absolute left-2 top-1/2 transform -translate-y-1/2 w-5 h-5"
+                  />
+                </div>
                 <div className="input-wrapper">
                   <span className="form-label">Mật khẩu</span>
                   <div style={{ position: "relative" }}>
-                    <i className="fa fa-lock icon"></i>
                     <input
+                      className="form-input pl-10"
                       type={passwordShow ? "text" : "password"}
                       name="password"
                       value={formData.password}
                       onChange={handleChangeInput}
                       placeholder="Điền mật khẩu của bạn ở đây"
                     ></input>
+                    <img
+                      src="https://icon-library.com/images/password-icon-png/password-icon-png-19.jpg"
+                      className="absolute left-2 top-1/2 transform -translate-y-1/2 w-4 h-4"
+                    />
                   </div>
 
                   <div className="eye-icon" onClick={togglePasswordVisiblity}>
@@ -190,7 +190,11 @@ function Login() {
             </p>
             <div className="login-with">
               <div>
-                <i className="fa-brands fa-google"></i>
+                <img
+                  src="https://icones.pro/wp-content/uploads/2021/02/google-icone-symbole-png-logo-orange-300x300.png"
+                  width={20}
+                  height={20}
+                />
                 <a
                   href="http://localhost:8080/oauth2/authorization/google"
                   style={{ textDecoration: "none" }}
@@ -199,7 +203,11 @@ function Login() {
                 </a>
               </div>
               <div>
-                <i className="fa-brands fa-facebook-f"></i>
+                <img
+                  src="https://www.freepnglogos.com/uploads/facebook-logo-icon/facebook-logo-icon-facebook-logo-png-transparent-svg-vector-bie-supply-15.png"
+                  width={10}
+                  height={8}
+                />
                 <a
                   href="http://localhost:8080/oauth2/authorization/facebook"
                   style={{ textDecoration: "none" }}
