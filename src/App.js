@@ -1,25 +1,28 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Login from "./pages/auth/login";
+import "./style/scss/main.scss";
 import AuthRoutes from "./routes/AuthRoutes";
+import Flight from "./pages/flights/Flights";
 import Hotels from "./pages/hotel/Hotels";
 import ProtectedRoute from "./routes/ProtectedRoute";
-import { useSelector, useDispatch } from "react-redux";
 import { selectUser } from "./redux/features/userSlice";
+import EditPendingBookingHotelStatus from "./components/profile/EditPendingBookingHotelStatus";
+import HomePage from "./pages/HomePage";
+import { useSelector, useDispatch } from "react-redux";
 import React, { useEffect } from "react";
 import Modal from "react-modal";
 import { selectModal, setModalIsOpen } from "./redux/features/modalSlice";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-import HomePage from "./pages/HomePage";
 import FlightTitle from "./components/flight-search/FlightTitle";
 import Search from "./components/flights/Search";
 import FlightFilter from "./components/flight-search/flightFilter";
 import FlightSearch from "./pages/FlightSearch";
-import Flight from "./pages/flights/Flights";
 import FlightTera from "./pages/FightTera";
 import ComboDiscovery from "./components/hompage/ComboDiscovery";
 import SeatDetailPage from "./components/flight-search/SeatDetailPage";
+import EditPendingBookingComboStatus from "./components/profile/EditPendingBookingComboStatus";
 
 Modal.setAppElement("#root");
 
@@ -104,6 +107,7 @@ function App() {
           <Route path="/search" element={<Flight />} />
           <Route path="/home" element={<HomePage />} />
           <Route path="/home1" element={<SeatDetailPage />} />
+          <Route path="/:id" element={<EditPendingBookingHotelStatus />} />
         </Routes>
       </BrowserRouter>
 

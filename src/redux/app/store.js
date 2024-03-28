@@ -5,6 +5,8 @@ import modalReducer from "../features/modalSlice";
 import hotelsReducer from "../features/hotelsSlice";
 
 import flightReducer from "../features/flightSlice";
+import customerReducer from "../features/customerSlice";
+import bookingReducer from "../features/bookingSlice";
 export const store = configureStore({
   reducer: {
     user: userReducer,
@@ -12,6 +14,8 @@ export const store = configureStore({
     modal: modalReducer,
     flight: flightReducer,
     hotels: hotelsReducer,
+    customer: customerReducer,
+    booking: bookingReducer,
   },
 });
 

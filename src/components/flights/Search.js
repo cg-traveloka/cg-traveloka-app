@@ -29,6 +29,7 @@ import SeatType from "../icon/SeatType";
 
 import { useNavigate } from "react-router-dom";
 
+import "../../style/scss/flight/_flightSearch.scss";
 function Search() {
   const dispatch = useDispatch();
   const airPortLocations = useSelector(selectAirPortLocations);
