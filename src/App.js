@@ -23,6 +23,8 @@ import FlightTera from "./pages/FightTera";
 import ComboDiscovery from "./components/hompage/ComboDiscovery";
 import SeatDetailPage from "./components/flight-search/SeatDetailPage";
 import EditPendingBookingComboStatus from "./components/profile/EditPendingBookingComboStatus";
+import HotelTera from "./pages/tera/HotelTera";
+import RoomTera from "./pages/tera/RoomTera";
 
 Modal.setAppElement("#root");
 
@@ -107,6 +109,12 @@ function App() {
           <Route path="/search" element={<Flight />} />
           <Route path="/home" element={<HomePage />} />
           <Route path="/home1" element={<SeatDetailPage />} />
+          {/* <Route element={<ProtectedRoute isAllowed={user.user != null} />}> */}
+          {/* <Route path="/hotels" element={<Hotels />} /> */}
+          {/* </Route> */}
+          <Route path="/tera/flight" element={<FlightTera />} />
+          <Route path="/tera/hotel" element={<HotelTera />} />
+          <Route path="/tera/room" element={<RoomTera />} />
           <Route path="/:id" element={<EditPendingBookingHotelStatus />} />
         </Routes>
       </BrowserRouter>
