@@ -1,10 +1,9 @@
 import { CalendarIcon } from "@mui/x-date-pickers";
 import React, { useEffect, useRef, useState } from "react";
-import Calendar from "../components/Calender";
 import { useDispatch } from "react-redux";
 import axios from "../config/privateAxios";
 import { setFlightInformation } from "../redux/features/flightSlice";
-
+import Calendar from "../components/utils/Calender";
 function FlightTera() {
   const dispatch = useDispatch();
 

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import Calendar from "../Calender";
+import Calendar from "../utils/Calender";
 import Modal from "react-modal";
 import Search from "../flights/Search";
 import { useDispatch, useSelector } from "react-redux";
@@ -7,13 +7,38 @@ import { selectModal, setModalIsOpen } from "../../redux/features/modalSlice";
 import FlightSort from "./FlightSort";
 import FlightInfo from "./FlightInfo";
 import FlightFilter from "./flightFilter";
+import BellIcon from "../icon/BellIcon";
+import SearchIcon from "../icon/SearchIcon";
+import { ArrowRightIcon } from "@mui/x-date-pickers";
+import CalenderIcon from "../icon/CalenderIcon";
+import {
+  selectFlightDetailsDTO,
+  selectFromAirPortLocationName,
+  selectSearchParams,
+  selectSeatTypeName,
+  selectToAirPorLocationName,
+} from "../../redux/features/flightSlice";
 function FlightTitle() {
-  const [startDate, setStartDate] = useState(new Date());
+  const fromAirportLocationsName = useSelector(selectFromAirPortLocationName);
+  const toAirportLocationName = useSelector(selectToAirPorLocationName);
+  const searchParams = useSelector(selectSearchParams);
+  const seatTypeName = useSelector(selectSeatTypeName);
+  let formattedDate = formatDate(searchParams.startDate);
+  const seatQuantity = searchParams.seatQuantity;
+
+  const [startDate, setStartDate] = useState(searchParams.startDate);
   const [selectedDates, setSelectedDates] = useState(Array(6).fill(false));
   const [isHovered, setIsHovered] = useState(false);
   const [listDate, setListDate] = useState([]);
   const [showCalendar, setShowCalendar] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  function formatDate(dateString) {
+    const date = new Date(dateString);
+    return date.toLocaleDateString("en-GB");
+  }
+  useEffect(() => {
+    console.log("Giá trị từ Redux state:", fromAirportLocationsName);
+  }, [fromAirportLocationsName]);
 
   const [calendarPosition, setCalendarPosition] = useState(0);
   const openModal = () => {
@@ -70,7 +95,7 @@ function FlightTitle() {
               }}
             >
               <div className="h-3 "></div>
-              <div className="flex w-9/12 rounded-lg mx-3 bg-blue-500">
+              <div className="flex w-11/12 rounded-lg mx-3 bg-blue-500">
                 <div
                   className={`rounded-lg w-${
                     isHovered ? "full" : "11/12"
@@ -81,18 +106,16 @@ function FlightTitle() {
                   <div className="flex justify-between mx-4">
                     <div>
                       <p className="mb-2 font-semibold flex gap-1">
-                        <span>TP HCM (SGN)</span>
-                        <span>
-                          <i className="fa-solid fa-arrow-right fa-xs"></i>
-                        </span>
-                        <span>H. Kông (HKG)</span>
+                        <span>{fromAirportLocationsName}</span>
+                        <span>→</span>
+                        <span>{toAirportLocationName}</span>
                       </p>
                       <p className="text-gray-600 flex gap-2 text-sm">
-                        <span>Thứ 4, 20 thg 3 2024</span>
+                        <span>{formattedDate}</span>
                         <span>|</span>
-                        <span>1 hành khách</span>
+                        <span>{seatQuantity} hành khách</span>
                         <span>|</span>
-                        <span>Phổ thông</span>
+                        <span>{seatTypeName}</span>
                       </p>
                     </div>
                     <div
@@ -102,12 +125,12 @@ function FlightTitle() {
                       {isHovered && (
                         <p className="hover:text-blue-500">Đổi tìm kiếm</p>
                       )}
-                      <i className="fa-solid fa-magnifying-glass text-blue-500"></i>
+                      <SearchIcon />
                     </div>
                   </div>
                 </div>
                 <div className="self-center">
-                  <i className="fa-solid fa-bell pl-0.5 text-yellow-400"></i>
+                  <BellIcon />
                 </div>
               </div>
 
@@ -139,10 +162,7 @@ function FlightTitle() {
                   ))}
                 </div>
                 <div className="self-center mr-3">
-                  <i
-                    className="fa-solid fa-chevron-right fa-xs"
-                    style={{ color: "white" }}
-                  ></i>
+                  <ArrowRightIcon style={{ color: "white" }} />
                 </div>
                 <div
                   className="self-center h-full w-10 justify-self-end border border-solid rounded-lg flex justify-center items-center transition-all duration-300 ease-in-out :hover:bg-sky-500  :visited:bg-sky-500 :active:bg-sky-500 :focus:bg-sky-500 hover:cursor-pointer"
@@ -151,10 +171,7 @@ function FlightTitle() {
                     setShowCalendar(!showCalendar);
                   }}
                 >
-                  <i
-                    className="fa-solid fa-calendar-days fa-lg px-3 "
-                    style={{ color: "white" }}
-                  ></i>
+                  <CalenderIcon />
                 </div>
               </div>
               <div className="flex justify-start gap-3 mx-3 my-2 h-12 items-center rounded-lg bg-white">

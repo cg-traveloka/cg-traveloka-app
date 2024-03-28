@@ -5,12 +5,12 @@ const initialState = {
   seatTypes: [],
   error: null,
   searchParams: {
-    fromAirportLocationId: null,
-    toAirportLocationId: null,
+    fromAirportLocationId: 1,
+    toAirportLocationId: 2,
     startDate: null,
-    airPlantBrandId: null,
-    seatTypeId: null,
-    seatQuantity: null,
+    airPlantBrandId: [],
+    seatTypeId: 1,
+    seatQuantity: 1,
     sortBy: "startTime",
     order: "asc",
     durationFrom: 0,
@@ -21,10 +21,12 @@ const initialState = {
   },
   searchResults: [],
   flightDetailsDTO: [],
-  airPlantSearchDTO: [],
   flightInForShortDescriptions: [],
-
+  selectToAirPort: null,
+  fromAirportLocationName: "Thành phố Hồ Chí Minh - SGN",
+  toAirportLocationName: "Thành phố Hà Nội - HAN",
   flightInformation: null,
+  seatTypeName: "phổ thông",
 };
 
 export const flightSlice = createSlice({
@@ -58,6 +60,18 @@ export const flightSlice = createSlice({
     setFlightInForShortDescriptions: (state, action) => {
       state.flightInForShortDescriptions = action.payload;
     },
+    setFromAirPortLocationName: (state, action) => {
+      state.fromAirportLocationName = action.payload;
+    },
+    setToAirPortLocationName: (state, action) => {
+      state.toAirportLocationName = action.payload;
+    },
+    setSeatTypeName: (state, action) => {
+      state.seatTypeName = action.payload;
+    },
+    updateAirPlaneId: (state, action) => {
+      state.searchParams.airPlantBrandId = action.payload;
+    },
   },
 });
 export const {
@@ -70,6 +84,11 @@ export const {
   setFlightDetailsDTO,
   setAirPlaneSearchDTO,
   setFlightInForShortDescriptions,
+  setSelectToAirPort,
+  setFromAirPortLocationName,
+  setToAirPortLocationName,
+  setSeatTypeName,
+  updateAirPlaneId,
 } = flightSlice.actions;
 
 export const selectAirPortLocations = (state) => state.flight.airPortLocations;
@@ -84,4 +103,10 @@ export const selectAirPlaneSearchDTO = (state) =>
   state.flight.airPlantSearchDTO;
 export const selectFlightInforShortDescriptions = (state) =>
   state.flight.flightInForShortDescriptions;
+export const selectFromAirPortLocationName = (state) =>
+  state.flight.fromAirportLocationName;
+export const selectToAirPorLocationName = (state) =>
+  state.flight.toAirportLocationName;
+export const selectSeatTypeName = (state) => state.flight.seatTypeName;
+export const selectUpdateAirPlane = (state) => state.flight.searchParams.airPlantBrandId;
 export default flightSlice.reducer;

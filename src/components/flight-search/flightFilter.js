@@ -1,11 +1,124 @@
-import React, { useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import RangeSlider from "./RangeSlider";
+import { ArrowDropDownIcon } from "@mui/x-date-pickers";
+import ArrowDownIcon from "../icon/ArrowDownIcon";
+import ArrowUpIcon from "../icon/ArrowUpIcon";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  selectAirPlaneSearchDTO,
+  selectFlightDetailsDTO,
+  selectSearchParams,
+  selectSearchResults,
+  setFlightDetailsDTO,
+  setSearchParams,
+  setSearchResults,
+  updateAirPlaneId,
+} from "../../redux/features/flightSlice";
+import axios from "../../config/privateAxios";
 
 function FlightFilter({ flightBrands }) {
-  const [lists, setList] = useState(["a", "b", "c"]);
-  const [lists2, setList2] = useState(["a", "b", "c"]);
-  const [list3, setList3] = useState(["a", "b", "c"]);
+  const flightDetailsDTO = useSelector(selectFlightDetailsDTO);
+  const [labelValues, setLabelValues] = useState(["0", "24"]);
+  const [priceLabelValues, setPriceLabelValues] = useState(["0", "20000"]);
+  const airPlantSearchDTO = useSelector(selectAirPlaneSearchDTO);
+
+  const dispatch = useDispatch();
+  const [filteredFlights, setFilteredFlights] = useState(flightDetailsDTO);
+  const defaultSelectedAirlines = useMemo(() => {
+    const selectedAirlines = {};
+    const newPlaneBrandId = [];
+    airPlantSearchDTO.forEach((item) => {
+      selectedAirlines[item.name] = true;
+      newPlaneBrandId.push(item.id);
+    });
+    dispatch(updateAirPlaneId(newPlaneBrandId));
+    return selectedAirlines;
+  }, [airPlantSearchDTO, dispatch]);
+
+  const [selectedAirlines, setSelectedAirlines] = useState(
+    defaultSelectedAirlines
+  );
+  const searchParams = useSelector(selectSearchParams);
+  const handleTimeRangeChange = (newValue) => {
+    const updatedSearchParams = {
+      ...searchParams,
+      durationFrom: newValue[0],
+      durationTo: newValue[1],
+    };
+    dispatch(setSearchParams(updatedSearchParams));
+  };
+  const handlePriceLabelChange = (values) => {
+    setPriceLabelValues(
+      values.map((value, index) =>
+        index === values.length - 1 ? `${value}` : `${value}`
+      )
+    );
+  };
+  const handlePriceRangeChange = (newValue) => {
+    let newPriceFrom = newValue[0];
+    let newPriceTo = newValue[1] === 10000 ? null : newValue[1];
+    const updatedSearchParams = {
+      ...searchParams,
+      priceFrom: newPriceFrom,
+      priceTo: newPriceTo,
+    };
+    dispatch(setSearchParams(updatedSearchParams));
+  };
+  const handleLabelChange = (values) => {
+    setLabelValues(
+      values.map((value, index) =>
+        index === values.length - 1 ? `${value}` : `${value}`
+      )
+    );
+  };
+
+  const searchFlights = () => {
+    axios
+      .post("/api/flights/search/filter", searchParams)
+      .then((response) => {
+        if (response.data && Array.isArray(response.data.flights)) {
+          dispatch(setFlightDetailsDTO(response.data.flights));
+          console.log(searchParams);
+
+          console.log(response.data);
+        } else {
+          console.error("API response does not contain the required array");
+        }
+      })
+      .catch((error) => {
+        console.error("Đã xảy ra lỗi khi gọi API:", error);
+      });
+  };
+
+  useEffect(() => {
+    searchFlights();
+  }, [searchParams]);
+  useEffect(() => {
+    dispatch(setFlightDetailsDTO(filteredFlights));
+  }, [filteredFlights]);
+  const handleAirlineFilter = (airPlantBrandId, airplaneName) => {
+    setSelectedAirlines((prevState) => {
+      const alreadySelected = !!prevState[airplaneName];
+      const updatedSelection = {
+        ...prevState,
+        [airplaneName]: !alreadySelected,
+      };
+
+      const updatedSearchParams = {
+        ...searchParams,
+        airPlantBrandId: alreadySelected
+          ? searchParams.airPlantBrandId.filter((id) => id !== airPlantBrandId)
+          : [...searchParams.airPlantBrandId, airPlantBrandId],
+      };
+
+      dispatch(setSearchParams(updatedSearchParams));
+
+      return updatedSelection;
+    });
+  };
+
   const [showList, setShowList] = useState({
+    airPlantSearchDTO: false,
     list1: false,
     list2: false,
     list3: false,
@@ -14,20 +127,13 @@ function FlightFilter({ flightBrands }) {
   const toogleShow = () => {
     setShow(!show);
   };
-  const [check, setCheck] = useState({});
-
   const toggleList = (listName) => {
     setShowList((prevState) => ({
       ...prevState,
       [listName]: !prevState[listName],
     }));
   };
-  const handleCheck = (element) => {
-    setCheck((prevIcons) => ({
-      ...prevIcons,
-      [element]: !prevIcons[element],
-    }));
-  };
+
   return (
     <div className="flight-search-container">
       <div className="flight-filter">
@@ -47,7 +153,7 @@ function FlightFilter({ flightBrands }) {
                 Hãng hàng không
               </span>
               <span className="flight-filter__item-container__item__title_elem2">
-                <i className="fa-solid fa-chevron-down"></i>
+                {showList.list1 ? <ArrowUpIcon /> : <ArrowDownIcon />}
               </span>
             </div>
             <div
@@ -55,43 +161,22 @@ function FlightFilter({ flightBrands }) {
                 showList.list1 ? "show" : ""
               }`}
             >
-              {lists.map((element) => (
+              {airPlantSearchDTO.map((airplane) => (
                 <div
-                  key={element}
+                  key={airplane.id}
                   className="flight-filter__item-container__item__brands__item pb-1 "
-                  onClick={() => handleCheck(element)}
+                  onClick={() =>
+                    handleAirlineFilter(airplane.id, airplane.name)
+                  }
                 >
-                  {!check[element] ? (
+                  {selectedAirlines[airplane.name] ? (
                     <svg
                       width="20"
                       height="20"
                       viewBox="0 0 24 24"
-                      fill="none"
+                      fill="#0194F3"
                       xmlns="http://www.w3.org/2000/svg"
-                      accentColor="#CDD0D1"
-                      fillColor="#0194F3"
-                      style={{
-                        border: "1px solid black",
-                        borderRadius: "5px",
-                      }}
-                    >
-                      <path
-                        d="M6.5 12L10.5 16L18 8.5"
-                        stroke="#333"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      ></path>
-                    </svg>
-                  ) : (
-                    <svg
-                      width="20"
-                      height="20"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      accentColor="#CDD0D1"
-                      fillColor="#0194F3"
+                      stroke="#CDD0D1"
                       style={{
                         backgroundColor: "rgb(1, 148, 243)",
                         color: "white",
@@ -101,14 +186,34 @@ function FlightFilter({ flightBrands }) {
                       <path
                         d="M6.5 12L10.5 16L18 8.5"
                         stroke="#FFFF"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      ></path>
+                    </svg>
+                  ) : (
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="#0194F3"
+                      xmlns="http://www.w3.org/2000/svg"
+                      stroke="#CDD0D1"
+                      style={{
+                        border: "1px solid black",
+                        borderRadius: "5px",
+                      }}
+                    >
+                      <path
+                        d="M6.5 12L10.5 16L18 8.5"
+                        stroke="#333"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
                       ></path>
                     </svg>
                   )}
-
-                  <span>{element}</span>
+                  <span>{airplane.name}</span>
                 </div>
               ))}
             </div>
@@ -121,10 +226,15 @@ function FlightFilter({ flightBrands }) {
                 Thời gian bay
               </span>
               <span className="flight-filter__item-container__item__title_elem2">
-                0h - 24h
+                {labelValues[0]} - {labelValues[1]}
               </span>
             </div>
-            <RangeSlider min={0} max={24} />
+            <RangeSlider
+              min={0}
+              max={24}
+              onChange={handleTimeRangeChange}
+              onLabelChange={handleLabelChange}
+            />
           </div>
         </div>
         <div className="flight-filter__item-container">
@@ -133,51 +243,17 @@ function FlightFilter({ flightBrands }) {
               <span className="flight-filter__item-container__item__title_elem1">
                 Giá
               </span>
-            </div>
-            <RangeSlider min={0} max={100} />
-          </div>
-        </div>
-        <div
-          className="flight-filter__item-container"
-          onClick={() => toggleList("list2")}
-        >
-          <div className="flight-filter__item-container__item">
-            <div
-              className={`flight-filter__item-container__item__title ${
-                showList.list2 ? "show" : ""
-              }`}
-            >
-              <span className="flight-filter__item-container__item__title_elem1">
-                Tiện ích
-              </span>
-              <span className="flight-filter__item-container__item__title_elem2">
-                <i className="fa-solid fa-chevron-down"></i>
+
+              <span>
+                {priceLabelValues[0]} - {priceLabelValues[1]}
               </span>
             </div>
-            <div
-              className={`flight-filter__item-container__item__brands ${
-                showList.list2 ? "show" : ""
-              }`}
-            >
-              {lists2.map((element) => (
-                <div key={element}>
-                  {/* /*{" "}
-                <p>
-                  <span>
-                    <i
-                      className="fa-light fa-square-check"
-                      style="color: #A4A6A8;"
-                    ></i>
-                  </span>
-                  <span>
-                    <img src={element.imgUrl} alt="flight brand logo" />
-                  </span>
-                  <span>${element.name}</span>
-                </p>{" "} */}
-                  <p>{element}</p>
-                </div>
-              ))}
-            </div>
+            <RangeSlider
+              min={0}
+              max={20000}
+              onChange={handlePriceRangeChange}
+              onLabelChange={handlePriceLabelChange}
+            />
           </div>
         </div>
 
@@ -193,7 +269,7 @@ function FlightFilter({ flightBrands }) {
                 Thời gian
               </span>
               <span className="flight-filter__item-container__item__title_elem2">
-                <i className="fa-solid fa-chevron-down"></i>
+                {show ? <ArrowUpIcon /> : <ArrowDownIcon />}
               </span>
             </div>
             <div

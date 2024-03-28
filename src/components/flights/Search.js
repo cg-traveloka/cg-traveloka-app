@@ -12,22 +12,27 @@ import {
   setError,
   setFlightDetailsDTO,
   setFlightInForShortDescriptions,
+  setFromAirPortLocationName,
   setSearchParams,
   setSearchResults,
+  setSeatTypeName,
+  setSelectToAirPort,
+  setSelectedAirport,
+  setToAirPortLocationName,
 } from "../../redux/features/flightSlice";
 import axios from "../../config/privateAxios";
-import Calendar from "../Calender";
+import Calendar from "../utils/Calender";
 import { CalendarIcon } from "@mui/x-date-pickers";
-import FlightTakeOffIcon from "../icons/FlightTakeOffIcon";
-import GuestNumberIcon from "../icons/GuestNumberIcon";
-import SeatType from "../icons/SeatType";
-import dayjs from "dayjs";
-import { logDOM } from "@testing-library/react";
+import FlightTakeOffIcon from "../icon/FlightTakeOffIcon";
+import GuestNumberIcon from "../icon/GuestNumberIcon";
+import SeatType from "../icon/SeatType";
+
 import { useNavigate } from "react-router-dom";
 
 function Search() {
   const dispatch = useDispatch();
   const airPortLocations = useSelector(selectAirPortLocations);
+
   const seatTypes = useSelector(selectSeatTypes);
   const searchParams = useSelector(selectSearchParams);
   const searchResults = useSelector(selectSearchResults);
@@ -38,7 +43,11 @@ function Search() {
     isOpenTo: false,
     showCalendar: false,
   });
-  const [form, setForm] = useState({});
+  const [form, setForm] = useState({
+    selectedCityFrom: "Thành phố Hồ Chí Minh - SGN",
+    seatQuantity: 1,
+    selectedCityTo: "Thành phố Hà Nội - HAN",
+  });
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -66,13 +75,9 @@ function Search() {
   };
   const searchFlights = async () => {
     try {
-      const response = await axios.get("/api/flights/search", {
-        params: searchParams,
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
+      const response = await axios.post("/api/flights/search", searchParams);
       console.log(response.data);
+      console.log("Search" + JSON.stringify(searchParams));
       if (
         response.data &&
         Array.isArray(response.data.flightDetailsDTO) &&
@@ -82,21 +87,23 @@ function Search() {
         dispatch(setFlightDetailsDTO(response.data.flightDetailsDTO));
         dispatch(setAirPlaneSearchDTO(response.data.airPlantSearchDTO));
         dispatch(
-          setFlightInForShortDescriptions(response.flightInForShortDescriptions)
+          setFlightInForShortDescriptions(
+            response.data.flightInForShortDescriptions
+          )
         );
       } else {
         console.error("API response does not contain the required arrays");
       }
-      console.log("Search Results", JSON.stringify(response.data));
-      navigate("/test2");
+      console.log(response.data);
+      navigate("/flight-search");
     } catch (error) {
       dispatch(setError(error.message));
     }
   };
 
-  useEffect(() => {
-    searchFlights();
-  }, []);
+  // useEffect(() => {
+  //   searchFlights();
+  // }, []);
   const handleSearch = () => {
     searchFlights();
   };
@@ -109,7 +116,7 @@ function Search() {
       .catch((error) => {
         dispatch(setError(error.message));
       });
-  }, [dispatch]);
+  }, []);
 
   useEffect(() => {
     axios
@@ -138,13 +145,15 @@ function Search() {
   };
   const handleDateChange = (date) => {
     const parts = date.split("/");
-    const localDateFormatted = `${parts[2]}-${parts[1]}-${parts[0]}`;
+    const localDate = new Date(`${parts[2]}/${parts[1]}/${parts[0]}`);
+    const localDateFormatted = localDate.toISOString();
     setForm((prevForm) => ({ ...prevForm, startDate: localDateFormatted }));
     dispatch(
       setSearchParams({ ...searchParams, startDate: localDateFormatted })
     );
     setShow((prevShow) => ({ ...prevShow, showCalendar: false }));
   };
+
   const handleChange = (field, value, dropdown) => {
     const seatQuantityValue = isNaN(parseInt(value)) ? value : parseInt(value);
 
@@ -162,8 +171,16 @@ function Search() {
     }
     console.log(`Đang thay đổi ${field} với giá trị: ${value}`);
 
+    if (field === "seatTypeId") {
+      const selectedSeatType = seatTypes.find(
+        (seatType) => String(seatType.id) === String(value)
+      );
+      dispatch(setSeatTypeName(selectedSeatType ? selectedSeatType.name : ""));
+    }
+
     setForm((prevForm) => ({ ...prevForm, [field]: value }));
     dispatch(setSearchParams({ ...searchParams, [field]: seatQuantityValue }));
+
     setShow((prevShow) => ({ ...prevShow, [dropdown]: false }));
   };
 
@@ -244,12 +261,14 @@ function Search() {
                                 airport.id,
                                 "isOpenFrom"
                               );
+                              const airportName = formatAirportLocation(
+                                airport.cityName,
+                                airport.airportLocationName
+                              );
+                              dispatch(setFromAirPortLocationName(airportName));
                               setForm((prevForm) => ({
                                 ...prevForm,
-                                selectedCityFrom: formatAirportLocation(
-                                  airport.cityName,
-                                  airport.airportLocationName
-                                ),
+                                selectedCityFrom: airportName,
                               }));
                             }}
                             className="dropdown-option"
@@ -308,6 +327,11 @@ function Search() {
                                 airport.id,
                                 "isOpenTo"
                               );
+                              const airportName = formatAirportLocation(
+                                airport.cityName,
+                                airport.airportLocationName
+                              );
+                              dispatch(setToAirPortLocationName(airportName));
                               setForm((prevForm) => ({
                                 ...prevForm,
                                 selectedCityTo: formatAirportLocation(
@@ -391,7 +415,9 @@ function Search() {
                     type="text"
                     name="startDate"
                     value={
-                      form.startDate || new Date().toLocaleDateString("en-GB")
+                      form.startDate
+                        ? new Date(form.startDate).toLocaleDateString("en-GB")
+                        : new Date().toLocaleDateString("en-GB")
                     }
                     onChange={(e) => handleDateChange(e.target.value)}
                     style={{ outline: "none" }}

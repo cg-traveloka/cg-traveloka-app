@@ -18,6 +18,8 @@ import FlightFilter from "./components/flight-search/flightFilter";
 import FlightSearch from "./pages/FlightSearch";
 import Flight from "./pages/flights/Flights";
 import FlightTera from "./pages/FightTera";
+import ComboDiscovery from "./components/hompage/ComboDiscovery";
+import SeatDetailPage from "./components/flight-search/SeatDetailPage";
 
 Modal.setAppElement("#root");
 
@@ -98,7 +100,10 @@ function App() {
           <Route element={<ProtectedRoute isAllowed={user.user != null} />}>
             <Route path="/hotels" element={<Hotels />} />
           </Route>
-          <Route path="/test" element={<Flight />} />
+          <Route path="/flight-search" element={<FlightSearch />} />
+          <Route path="/search" element={<Flight />} />
+          <Route path="/home" element={<HomePage />} />
+          <Route path="/home1" element={<SeatDetailPage />} />
         </Routes>
       </BrowserRouter>
 
