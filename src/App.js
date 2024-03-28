@@ -6,7 +6,6 @@ import Flight from "./pages/flights/Flights";
 import Hotels from "./pages/hotel/Hotels";
 import ProtectedRoute from "./routes/ProtectedRoute";
 import { selectUser } from "./redux/features/userSlice";
-import EditPendingBookingHotelStatus from "./components/profile/EditPendingBookingHotelStatus";
 import HomePage from "./pages/HomePage";
 import { useSelector, useDispatch } from "react-redux";
 import React, { useEffect } from "react";
@@ -14,7 +13,13 @@ import Modal from "react-modal";
 import { selectModal, setModalIsOpen } from "./redux/features/modalSlice";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import EditPendingBookingComboStatus from "./components/profile/EditPendingBookingComboStatus";
+import EditTable from "./components/profile/EditTable";
+import EditProfile from "./components/profile/EditProfile";
+import ListBookingHotelStatus from "./components/profile/ListBookingHotelStatus";
+import ReviewHotel from "./components/profile/ReviewHotel";
+import ListBookingAirplaneStatus from "./components/profile/ListBookingAirplaneStatus";
+import ListBookingComboStatus from "./components/profile/ListBookingComboStatus";
+import EditBonus from "./components/profile/EditBonus";
 
 Modal.setAppElement("#root");
 
@@ -90,18 +95,27 @@ function App() {
 
       <BrowserRouter>
         <Routes>
-          {/* <Route path="/" element={<Login />} />
+          <Route path="/" element={<Login />} />
           <Route path="/*" element={<AuthRoutes />} />
           <Route element={<ProtectedRoute isAllowed={user.user != null} />}>
+            <Route path="/bookinghotel" element={<ListBookingHotelStatus />} />
+            <Route
+              path="/bookingticket"
+              element={<ListBookingAirplaneStatus />}
+            />
+            <Route path="/bookingcombo" element={<ListBookingComboStatus />} />
             <Route path="/hotels" element={<Hotels />} />
-          </Route> */}
-          <Route path="/:id" element={<EditPendingBookingHotelStatus />} />
+            <Route path="/table" element={<EditTable />} />
+            <Route path="/review/:id" element={<ReviewHotel />} />
+            <Route path="/mybonus" element={<EditBonus />} />
+          </Route>
+          <Route path="/profile" element={<EditProfile />} />
         </Routes>
       </BrowserRouter>
 
       <ToastContainer
         position="top-right"
-        autoClose={2000}
+        autoClose={5000}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick

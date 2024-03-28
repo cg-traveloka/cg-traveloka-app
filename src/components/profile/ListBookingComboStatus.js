@@ -12,19 +12,19 @@ import {
   setBookingPending,
 } from "../../redux/features/bookingSlice";
 
-function EditPendingBookingComboStatus() {
+function ListBookingComboStatus() {
   const dispatch = useDispatch();
   const { id } = useParams();
   const [hasBooked, setHasBooked] = useState(false);
 
   useEffect(() => {
     axios
-      .get(`/api/comboPending/customer/${id}`)
+      .get(`/api/comboPending`)
       .then((res) => {
         console.log(res.data);
         dispatch(setBookingPending(res.data));
 
-        return axios.get(`/api/comboBooked/customer/${id}`);
+        return axios.get(`/api/comboBooked`);
       })
       .then((res) => {
         if (res.data && res.data.length > 0) {
@@ -85,7 +85,9 @@ function EditPendingBookingComboStatus() {
               >
                 Combo của bạn
                 <h1 className="text-center me-2 font-bold text-black">
-                  {booking.totalMoney} VND
+                  {`${booking.totalMoney? booking.totalMoney
+                    .toString()
+                    .replace(/\B(?=(\d{3})+(?!\d))/g, "."): null} VND`}
                 </h1>
               </div>
 
@@ -163,7 +165,7 @@ function EditPendingBookingComboStatus() {
             <div>
               {bookingBooked?.map((booking, index) => (
                 <div
-                  className="mt-2 shadow-md bg-gray rounded-lg border-solid border-2 border-gray-200 font-sans"
+                  className="mt-2 mb-8 shadow-md bg-gray rounded-lg border-solid border-2 border-gray-200 font-sans"
                   key={index}
                 >
                   <div
@@ -175,7 +177,9 @@ function EditPendingBookingComboStatus() {
                   >
                     Combo của bạn
                     <h1 className="text-center me-2 font-bold text-black">
-                      {booking.totalMoney} VND
+                      {`${booking.totalMoney
+                        .toString()
+                        .replace(/\B(?=(\d{3})+(?!\d))/g, ".")} VND`}
                     </h1>
                   </div>
 
@@ -270,34 +274,10 @@ function EditPendingBookingComboStatus() {
               </div>
             </div>
           )}
-
-          <h1 className="font-bold text-2xl mt-7">Lịch sử giao dịch</h1>
-
-          <div className="mt-3 mb-16 shadow-sm bg-gray rounded-lg border-solid border-2 border-gray-200">
-            <div className="ms-3 my-4">
-              <div className="px-2 me-2 gap-4 flex">
-                <div className="flex justify-between font-sans">
-                  <p className="mb-1 font-semibold text-base">
-                    Xem
-                    <button
-                      type="submit"
-                      className="ms-1 font-bold"
-                      style={{
-                        color: "rgba(1,148,243,1.00)",
-                      }}
-                    >
-                      Lịch sử giao dịch
-                    </button>
-                  </p>
-                  <p className="mb-1 ms-1 font-semibold text-base">của bạn</p>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </div>
   );
 }
 
-export default EditPendingBookingComboStatus;
+export default ListBookingComboStatus;

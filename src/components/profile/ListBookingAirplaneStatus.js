@@ -4,26 +4,24 @@ import EditTable from "./EditTable";
 import { useDispatch } from "react-redux";
 import axios from "../../config/privateAxios";
 import { useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import {
   setBookingBooked,
   setBookingPending,
 } from "../../redux/features/bookingSlice";
 
-function EditPendingBookingAirplaneStatus() {
+function ListBookingAirplaneStatus() {
   const dispatch = useDispatch();
-  const { id } = useParams();
   const [hasBooked, setHasBooked] = useState(false);
 
   useEffect(() => {
     axios
-      .get(`/api/ticketPending/customer/${id}`)
+      .get(`/api/ticketPending`)
       .then((res) => {
         console.log(res.data);
         dispatch(setBookingPending(res.data));
 
-        return axios.get(`/api/ticketBooked/customer/${id}`);
+        return axios.get(`/api/ticketBooked`);
       })
       .then((res) => {
         if (res.data && res.data.length > 0) {
@@ -51,7 +49,7 @@ function EditPendingBookingAirplaneStatus() {
 
   return (
     <div className="edit-booking-hotel mx-auto my-auto w-8/12 pt-5">
-      <div className="flex">
+      <div className="flex ">
         <EditTable />
         <div className="right-content w-4/5 pl-5">
           <div className="flex font-sans">
@@ -122,7 +120,7 @@ function EditPendingBookingAirplaneStatus() {
             <div>
               {bookingBooked?.map((booking, index) => (
                 <div
-                  className="mt-2 shadow-md bg-gray rounded-lg border-solid border-2 border-gray-200 font-sans"
+                  className="mt-3 mb-5 shadow-md bg-gray rounded-lg border-solid border-2 border-gray-200 font-sans"
                   key={index}
                 >
                   <div className="px-2 flex py-3">
@@ -192,9 +190,9 @@ function EditPendingBookingAirplaneStatus() {
             </div>
           )}
 
-          <h1 className="font-bold text-2xl mt-7 mb-3">Lịch sử giao dịch</h1>
+          {/* <h1 className="font-bold text-2xl mt-7 mb-3">Lịch sử giao dịch</h1> */}
 
-          <div className="mt-2 mb-16 shadow-sm bg-gray rounded-lg border-solid border-2 border-gray-200">
+          {/* <div className="mt-2 mb-16 shadow-sm bg-gray rounded-lg border-solid border-2 border-gray-200">
             <div className="ms-3 my-4">
               <div className="px-2 me-2 gap-4 flex">
                 <div className="flex justify-between font-sans">
@@ -214,11 +212,11 @@ function EditPendingBookingAirplaneStatus() {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
   );
 }
 
-export default EditPendingBookingAirplaneStatus;
+export default ListBookingAirplaneStatus;

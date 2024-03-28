@@ -45,16 +45,15 @@ function Login() {
         toast.success("Đăng nhập thành công");
         // navigate("/hotels");
       });
-      await axios.post('/login/account', data)
-        .then(result => {
-          dispatch(saveUser(result.data));
-          console.log(result.data);
-          dispatch(setModalMessage("Đăng nhập thành công"));
-          dispatch(setModalStatus("sucess"))
-          dispatch(setModalIsOpen(true));
-          toast.success("Đăng nhập thành công")
-          navigate("/hotels");
-        });
+      await axios.post("/login/account", data).then((result) => {
+        dispatch(saveUser(result.data));
+        console.log(result.data);
+        dispatch(setModalMessage("Đăng nhập thành công"));
+        dispatch(setModalStatus("sucess"));
+        dispatch(setModalIsOpen(true));
+        toast.success("Đăng nhập thành công");
+        navigate("/profile");
+      });
     } catch (error) {
       dispatch(setModalMessage("Đăng nhập thất bại"));
       dispatch(setModalStatus("error"));
