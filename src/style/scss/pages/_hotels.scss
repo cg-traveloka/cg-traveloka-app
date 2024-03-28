@@ -12,8 +12,21 @@
     }
     .hotels-body{
         width: 966px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         .hotels-list{
             margin-top: 20px;
+        }
+        button{
+            width: 100px;
+            height: 50px;
+            background-color: $traveloka-light-blue;
+            border-radius: 8px;
+            color: #fff;
+            &:hover{
+                cursor: pointer;
+            }
         }
     }
     

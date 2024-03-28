@@ -4,18 +4,29 @@ import HotelSearchBar from "../../components/layout/hotels/HotelSearchBar";
 import HotelSortBar from "../../components/layout/hotels/HotelSortBar";
 import axios from "../../config/privateAxios";
 import { useEffect, useState } from "react";
-import { changeHotels, selectHotels } from "../../redux/features/hotelsSlice";
+import { changeHotels, selectHotels, addHotels } from "../../redux/features/hotelsSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { changePageNumber, selectHotel } from "../../redux/features/hotelSlice";
+import { useParams } from "react-router-dom";
 
 function Hotels(params) {
+    const hotel = useSelector(selectHotel);
     const hotelsStates = useSelector(selectHotels);
     const hotels = hotelsStates.hotels;
     const dispatch = useDispatch();
     useEffect(() => {
-        axios.get("/api/hotels").then(
+        axios.post("/api/search/hotels", { ...hotel }).then(
             result => dispatch(changeHotels(result.data.hotels))
         ).catch();
-    }, [])
+    }, []);
+
+    function handleLoadMore() {
+        axios.post("/api/search/hotels", { ...hotel, pageNumber: hotel.pageNumber + 1 }).then(
+            result => dispatch(addHotels(result.data.hotels))
+        ).catch();
+        dispatch(changePageNumber(hotel.pageNumber+1));
+    }
+
     return (
         <div className="hotels">
             <HotelSearchBar />
@@ -28,6 +39,7 @@ function Hotels(params) {
                             <HotelCard key={hotel.id} hotel={hotel} />
                         )}
                     </div>
+                    <button onClick={handleLoadMore}>Xem thêm</button>
                 </div>
             </div>
         </div>

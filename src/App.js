@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, useParams } from "react-router-dom";
 import Login from "./pages/auth/login";
 import AuthRoutes from "./routes/AuthRoutes";
 import Hotels from "./pages/hotel/Hotels";
@@ -12,6 +12,8 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import HomePage from "./pages/HomePage";
+import HotelInfo from "./pages/hotel/HotelInfo";
+import RoomContractPreview from "./components/layout/hotels/RoomContractPreview";
 
 Modal.setAppElement("#root");
 
@@ -21,7 +23,6 @@ function App() {
   const dispatch = useDispatch();
   let subtitle;
   let statusColor;
-
   useEffect(() => {
     if (modal.status === "info") statusColor = "#3498db";
     if (modal.status === "sucess") statusColor = "#07bc0c";
@@ -77,8 +78,8 @@ function App() {
             modal.status === "sucess"
               ? "modalButtonSucess"
               : modal.status === "info"
-              ? "modalButtonInfo"
-              : "modalButtonError"
+                ? "modalButtonInfo"
+                : "modalButtonError"
           }
         >
           Xác nhận
@@ -91,6 +92,8 @@ function App() {
           <Route path="/*" element={<AuthRoutes />} />
           <Route element={<ProtectedRoute isAllowed={user.user != null} />}>
             <Route path="/hotels" element={<Hotels />} />
+            <Route path="/hotels/:id" element={<HotelInfo />} />
+            <Route path="/hotels/booking/:id" element={<RoomContractPreview />} />
           </Route>
         </Routes>
       </BrowserRouter>

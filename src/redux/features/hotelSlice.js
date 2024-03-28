@@ -52,10 +52,13 @@ export const hotelSlice = createSlice({
         },
         changeSort: (state, action) => {
             state.sort = action.payload;
+        },
+        changePageNumber: (state,action)=>{
+            state.pageNumber = action.payload;
         }
     }
 });
 
-export const { changeHotelId, changeCity, changeStartDate, changeNights, changePersonQuantity, changeRoomQuantity, changeMoneyFrom, changeMoneyTo, addStar, removeStar, changeSort } = hotelSlice.actions
+export const { changeHotelId, changeCity, changeStartDate, changeNights, changePersonQuantity, changeRoomQuantity, changeMoneyFrom, changeMoneyTo, addStar, removeStar, changeSort, changePageNumber } = hotelSlice.actions
 export const selectHotel = (state) => state.hotel;
 export default hotelSlice.reducer;

@@ -8,6 +8,7 @@
 @import "base/buttons";
 @import "layout/header";
 @import "layout/footer";
+@import "~react-image-gallery/styles/scss/image-gallery.scss";
 @import "layout/hotel/HotelSearchBar";
 @import "home-page/header";
 @import "flight-search/flightFilter";
@@ -24,4 +25,7 @@
 @import "layout/hotel//HotelFilterBanner";
 @import "layout/hotel//HotelSortBar";
 @import "layout/hotel//HotelCard";
+@import "pages/hotelInfo";
+@import "layout/hotel/RoomCard";
+@import "layout/hotel//RoomContractPreview"
 
