@@ -15,9 +15,9 @@ function FlightTakeOffIcon() {
         <path
           d="M3 21H21"
           stroke="#03121A"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         ></path>
         <path
           fillRule="evenodd"
