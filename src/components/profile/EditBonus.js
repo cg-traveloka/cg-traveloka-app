@@ -1,12 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import EditProfileContent1 from "./EditTable";
+import EditTable from "./EditTable";
 
 function EditProfileContent2() {
   return (
-    <div className="edit-bonus mx-auto w-4/5 ">
-      <div className="flex gap 4">
-        <div className="right-content w-2/3 pl-6 ">
+    <div className="edit-bonus mx-auto my-auto w-8/12 pt-5">
+      <div className="flex gap-2">
+        <EditTable />
+        <div className="right-content w-4/5 pl-5 ">
           <div className="flex justify-between pb-4 ">
             <h1 className="font-bold text-2xl">Điểm thưởng của tôi</h1>
             <a href="#">
@@ -66,7 +68,7 @@ function EditProfileContent2() {
 
               <div className="flex gap-2">
                 <div
-                  className="mt-8 ms-7  rounded-full border flex items-center justify-center"
+                  className="mt-8 ms-2  rounded-full border flex items-center justify-center"
                   style={{
                     height: "70px",
                     width: "70px",
@@ -167,23 +169,23 @@ function EditProfileContent2() {
               </div>
 
               <div className="flex gap-2">
-                <div className="mt-5 ms-10">
+                <div className="mt-5 ms-5">
                   <p>1 to go</p>
                 </div>
 
-                <div className="mt-5 ms-10">
+                <div className="mt-5 ms-8">
                   <p>1 to go</p>
                 </div>
 
-                <div className="mt-5 ms-10">
+                <div className="mt-5 ms-8">
                   <p>1 to go</p>
                 </div>
 
-                <div className="mt-5 ms-10">
+                <div className="mt-5 ms-8">
                   <p>1 to go</p>
                 </div>
 
-                <div className="mt-5 ms-10">
+                <div className="mt-5 ms-8">
                   <p>1 to go</p>
                 </div>
               </div>
