@@ -29,7 +29,7 @@ function Header() {
                   <Link href="#"> Đặt chỗ của tôi</Link>
                 </li>
                 <li className="auth-link-login">
-                  <Link href="#">Đăng nhập</Link>
+                  <Link to="/login">Đăng nhập</Link>
                 </li>
                 <li className="auth-link-register">
                   <Link href="#">Đăng ký</Link>

@@ -26,7 +26,7 @@ function Header() {
                 <Link to={""}> Đặt chỗ của tôi</Link>
               </li>
               <li className="auth-link-login">
-                <Link to={""}>Đăng nhập</Link>
+                <Link to={"/login"}>Đăng nhập</Link>
               </li>
               <li className="auth-link-register">
                 <Link to={""}>Đăng ký</Link>

@@ -16,8 +16,8 @@ function BellIcon() {
           fill="#C9EA3D"
         ></path>
         <path
-          fill-rule="evenodd"
-          clip-rule="evenodd"
+          fillRule="evenodd"
+          clipRule="evenodd"
           d="M13 1.06189C16.9463 1.55399 20 4.92038 20 9V14L22 18V19C22 19.5523 21.5523 20 21 20H3C2.44772 20 2 19.5523 2 19V18L4 14V9C4 4.92038 7.05369 1.55399 11 1.06189V1C11 0.447715 11.4477 0 12 0C12.5523 0 13 0.447715 13 1V1.06189Z"
           fill="#C9EA3D"
         ></path>

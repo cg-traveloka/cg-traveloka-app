@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, useParams } from "react-router-dom";
 import Login from "./pages/auth/login";
 import "./style/scss/main.scss";
 import AuthRoutes from "./routes/AuthRoutes";
@@ -13,6 +13,8 @@ import Modal from "react-modal";
 import { selectModal, setModalIsOpen } from "./redux/features/modalSlice";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import HotelInfo from "./pages/hotel/HotelInfo";
+import RoomContractPreview from "./components/layout/hotels/RoomContractPreview";
 import EditTable from "./components/profile/EditTable";
 import EditProfile from "./components/profile/EditProfile";
 import ListBookingHotelStatus from "./components/profile/ListBookingHotelStatus";
@@ -24,11 +26,12 @@ import FlightTitle from "./components/flight-search/FlightTitle";
 import Search from "./components/flights/Search";
 import FlightFilter from "./components/flight-search/flightFilter";
 import FlightSearch from "./pages/FlightSearch";
-import FlightTera from "./pages/FightTera";
 import ComboDiscovery from "./components/hompage/ComboDiscovery";
 import SeatDetailPage from "./components/flight-search/SeatDetailPage";
 import HotelTera from "./pages/tera/HotelTera";
 import RoomTera from "./pages/tera/RoomTera";
+import TeraHomepage from "./pages/tera/TeraHomePage";
+import FlightTera from "./pages/tera/FlightTera";
 
 Modal.setAppElement("#root");
 
@@ -38,7 +41,6 @@ function App() {
   const dispatch = useDispatch();
   let subtitle;
   let statusColor;
-
   useEffect(() => {
     if (modal.status === "info") statusColor = "#3498db";
     if (modal.status === "sucess") statusColor = "#07bc0c";
@@ -94,8 +96,8 @@ function App() {
             modal.status === "sucess"
               ? "modalButtonSucess"
               : modal.status === "info"
-              ? "modalButtonInfo"
-              : "modalButtonError"
+                ? "modalButtonInfo"
+                : "modalButtonError"
           }
         >
           Xác nhận
@@ -114,6 +116,8 @@ function App() {
             />
             <Route path="/bookingcombo" element={<ListBookingComboStatus />} />
             <Route path="/hotels" element={<Hotels />} />
+            <Route path="/hotels/:id" element={<HotelInfo />} />
+            <Route path="/hotels/booking/:id" element={<RoomContractPreview />} />
             <Route path="/table" element={<EditTable />} />
             <Route path="/review/:id" element={<ReviewHotel />} />
             <Route path="/mybonus" element={<EditBonus />} />
@@ -123,12 +127,10 @@ function App() {
           <Route path="/search" element={<Flight />} />
           <Route path="/home" element={<HomePage />} />
           <Route path="/home1" element={<SeatDetailPage />} />
-          {/* <Route element={<ProtectedRoute isAllowed={user.user != null} />}> */}
-          {/* <Route path="/hotels" element={<Hotels />} /> */}
-          {/* </Route> */}
           <Route path="/tera/flight" element={<FlightTera />} />
           <Route path="/tera/hotel" element={<HotelTera />} />
           <Route path="/tera/room" element={<RoomTera />} />
+          <Route path="/tera" element={<TeraHomepage />} />
         </Routes>
       </BrowserRouter>
 

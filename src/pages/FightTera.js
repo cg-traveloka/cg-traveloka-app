@@ -149,7 +149,7 @@ function FlightTera() {
                     onChange={(e) => {
                       handleChange(e);
                     }}
-                    placeholder="Nhập sân bay đi"
+                    placeholder="Nhập hãng bay"
                   />
                   <div
                     className={
@@ -249,7 +249,7 @@ function FlightTera() {
 
                       setShow({ div3: true });
                     }}
-                    placeholder="Nhập sân bay đi"
+                    placeholder="Nhập sân bay đến"
                   />
                   {show.div3 && (
                     <div

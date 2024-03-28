@@ -1,3 +1,8 @@
+.hotelHeader{
+    position: relative;
+    height: 52.43px;
+    background-image: linear-gradient(90deg, #1A2F78 0%, #1870C9 50%, #5195E3 100%);
+}
 .hotels{
     width: 100vw;
     display: flex;
@@ -12,8 +17,21 @@
     }
     .hotels-body{
         width: 966px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         .hotels-list{
             margin-top: 20px;
+        }
+        button{
+            width: 100px;
+            height: 50px;
+            background-color: $traveloka-light-blue;
+            border-radius: 8px;
+            color: #fff;
+            &:hover{
+                cursor: pointer;
+            }
         }
     }
     

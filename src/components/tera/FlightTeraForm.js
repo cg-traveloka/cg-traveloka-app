@@ -87,8 +87,10 @@ function FightTeraForm({ sendSubmitStatus }) {
       .then((res) => {
         setFlightBrands(res.data);
         setFlightBrands2(res.data);
-        setData((prev) => ({ ...prev, airplaneBrandId: res.data[0].id }));
-        setForm((prev) => ({ ...prev, flightBrand: res.data[0].name }));
+        if (res.data[0] != null) {
+          setData((prev) => ({ ...prev, airplaneBrandId: res.data[0].id }));
+          setForm((prev) => ({ ...prev, flightBrand: res.data[0].name }));
+        }
       })
       .catch((err) => {
         console.log(err);
@@ -124,8 +126,10 @@ function FightTeraForm({ sendSubmitStatus }) {
       );
       setFlightBrands(response.data);
       if (response.data.length === 0) {
-        setForm((prev) => ({ ...prev, flightBrand: flightBrands2[0].name }));
-        setData((prev) => ({ ...prev, airplaneBrandId: flightBrands2[0].id }));
+        if (flightBrands2[0] != null) {
+          setForm((prev) => ({ ...prev, flightBrand: flightBrands2[0].name }));
+          setData((prev) => ({ ...prev, airplaneBrandId: flightBrands2[0].id }));
+        }
       }
     } catch (error) {
       console.log(error);
@@ -368,13 +372,13 @@ function FightTeraForm({ sendSubmitStatus }) {
       axios
         .post("http://localhost:8080/api/flights", data)
         .then((res) => {
-          // toast.success("Đăng kí chuyến bay thành công");
-          alert("Đăng kí chuyến bay thành công");
+          toast.success("Đăng kí chuyến bay thành công");
+          // toast("Đăng kí chuyến bay thành công");
           sendSubmitStatus(false);
         })
         .catch((err) => {
-          // toast.error("Đăng kí chuyến bay thất bại");
-          alert("Đăng kí chuyến bay thất bại");
+          toast.error("Đăng kí chuyến bay thất bại");
+          // alert("Đăng kí chuyến bay thất bại");
           sendSubmitStatus(false);
           console.log("fail");
         });
@@ -447,12 +451,11 @@ function FightTeraForm({ sendSubmitStatus }) {
                           type="text"
                           name="flightBrand"
                           value={form.flightBrand || ""}
-                          className={`px-2 w-full h-8 border border-solid rounded-md ${
-                            formikProps.errors.flightBrand &&
+                          className={`px-2 w-full h-8 border border-solid rounded-md ${formikProps.errors.flightBrand &&
                             formikProps.touched.flightBrand
-                              ? "border-red-400 border-2"
-                              : ""
-                          }`}
+                            ? "border-red-400 border-2"
+                            : ""
+                            }`}
                           onChange={(event) => {
                             handleChange(event, formikProps);
                             handleShow("div1", true);
@@ -527,12 +530,12 @@ function FightTeraForm({ sendSubmitStatus }) {
                         <Field
                           type="text"
                           name="fromLocation"
-                          className={`px-2 w-full h-8 border border-solid rounded-md  ${
-                            formikProps.errors.fromLocation &&
+
+                          className={`px-2 w-full h-8 border border-solid rounded-md  ${formikProps.errors.fromLocation &&
                             formikProps.touched.fromLocation
-                              ? "border-red-400 border-2"
-                              : ""
-                          }`}
+                            ? "border-red-400 border-2"
+                            : ""
+                            }`}
                           value={form.fromLocation || ""}
                           onChange={(event) => {
                             handleChange(event, formikProps);
@@ -612,12 +615,12 @@ function FightTeraForm({ sendSubmitStatus }) {
                       <div className="relative" style={{ width: "45%" }}>
                         <Field
                           type="text"
-                          className={`px-2 w-full h-8 border border-solid rounded-md ${
-                            formikProps.errors.toLocation &&
+                          placeholder="Nhập sân bay đến"
+                          className={`px-2 w-full h-8 border border-solid rounded-md ${formikProps.errors.toLocation &&
                             formikProps.touched.toLocation
-                              ? "border-red-400 border-2"
-                              : ""
-                          }`}
+                            ? "border-red-400 border-2"
+                            : ""
+                            }`}
                           value={form.toLocation || ""}
                           name="toLocation"
                           onChange={(event) => {
@@ -712,12 +715,11 @@ function FightTeraForm({ sendSubmitStatus }) {
                                     new Date(event.target.value).toISOString()
                                   );
                                 }}
-                                className={`px-2 w-10/12 h-8 border border-solid rounded-md mr-5 text-right pr-10 ${
-                                  formikProps.errors.startDate &&
+                                className={`px-2 w-10/12 h-8 border border-solid rounded-md mr-5 text-right pr-10 ${formikProps.errors.startDate &&
                                   formikProps.touched.startDate
-                                    ? "border-red-400 border-2"
-                                    : ""
-                                }`}
+                                  ? "border-red-400 border-2"
+                                  : ""
+                                  }`}
                               />
                               <CalendarIcon
                                 style={{ color: "#0194F3" }}
@@ -752,12 +754,11 @@ function FightTeraForm({ sendSubmitStatus }) {
                                     endTime: endDateValue,
                                   }));
                                 }}
-                                className={`px-2 w-10/12 h-8 border border-solid rounded-md mr-5 text-right pr-10 startDate ${
-                                  formikProps.errors.endDate &&
+                                className={`px-2 w-10/12 h-8 border border-solid rounded-md mr-5 text-right pr-10 startDate ${formikProps.errors.endDate &&
                                   formikProps.touched.endDate
-                                    ? "border-red-400 border-2"
-                                    : ""
-                                }`}
+                                  ? "border-red-400 border-2"
+                                  : ""
+                                  }`}
                               />
                               <CalendarIcon
                                 style={{ color: "#0194F3" }}
@@ -803,12 +804,11 @@ function FightTeraForm({ sendSubmitStatus }) {
                               type="number"
                               name="normalSeatQuantity"
                               value={form.normalSeatQuantity || "0"}
-                              className={`px-2 w-full h-8 border border-solid rounded-md focus:outline-none focus:border-blue-500 focus:border-2 ${
-                                formikProps.errors.normalSeatQuantity &&
+                              className={`px-2 w-full h-8 border border-solid rounded-md focus:outline-none focus:border-blue-500 focus:border-2 ${formikProps.errors.normalSeatQuantity &&
                                 formikProps.touched.normalSeatQuantity
-                                  ? "border-red-400 border-2"
-                                  : ""
-                              }`}
+                                ? "border-red-400 border-2"
+                                : ""
+                                }`}
                               onChange={(event) => {
                                 handleChange(event, formikProps);
                                 handleSetData(
@@ -824,12 +824,11 @@ function FightTeraForm({ sendSubmitStatus }) {
                               type="number"
                               name="normalSeatPrice"
                               value={form.normalSeatPrice || "0"}
-                              className={`px-2 w-full h-8 border border-solid rounded-md  focus:outline-none focus:border-blue-500 focus:border-2 ${
-                                formikProps.errors.normalSeatPrice &&
+                              className={`px-2 w-full h-8 border border-solid rounded-md  focus:outline-none focus:border-blue-500 focus:border-2 ${formikProps.errors.normalSeatPrice &&
                                 formikProps.touched.normalSeatPrice
-                                  ? "border-red-400 border-2"
-                                  : ""
-                              }`}
+                                ? "border-red-400 border-2"
+                                : ""
+                                }`}
                               onChange={(event) => {
                                 handleChange(event, formikProps);
                                 handleSetData(
@@ -868,12 +867,11 @@ function FightTeraForm({ sendSubmitStatus }) {
                               type="number"
                               name="specialNormalSeatQuantity"
                               value={form.specialNormalSeatQuantity || "0"}
-                              className={`px-2 w-full h-8 border border-solid rounded-md focus:outline-none focus:border-blue-500 focus:border-2 ${
-                                formikProps.errors.specialNormalSeatQuantity &&
+                              className={`px-2 w-full h-8 border border-solid rounded-md focus:outline-none focus:border-blue-500 focus:border-2 ${formikProps.errors.specialNormalSeatQuantity &&
                                 formikProps.touched.specialNormalSeatQuantity
-                                  ? "border-red-400 border-2"
-                                  : ""
-                              }`}
+                                ? "border-red-400 border-2"
+                                : ""
+                                }`}
                               onChange={(event) => {
                                 handleChange(event, formikProps);
                                 handleSetData(
@@ -889,12 +887,11 @@ function FightTeraForm({ sendSubmitStatus }) {
                               type="number"
                               name="specialNormalSeatPrice"
                               value={form.specialNormalSeatPrice || "0"}
-                              className={`px-2 w-full h-8 border border-solid rounded-md  focus:outline-none focus:border-blue-500 focus:border-2 ${
-                                formikProps.errors.specialNormalSeatPrice &&
+                              className={`px-2 w-full h-8 border border-solid rounded-md  focus:outline-none focus:border-blue-500 focus:border-2 ${formikProps.errors.specialNormalSeatPrice &&
                                 formikProps.touched.specialNormalSeatPrice
-                                  ? "border-red-400 border-2"
-                                  : ""
-                              }`}
+                                ? "border-red-400 border-2"
+                                : ""
+                                }`}
                               onChange={(event) => {
                                 handleChange(event, formikProps);
                                 handleSetData(
@@ -932,12 +929,11 @@ function FightTeraForm({ sendSubmitStatus }) {
                               name="businessSeatQuantity"
                               value={form.businessSeatQuantity || "0"}
                               className={`px-2 w-full h-8 border border-solid rounded-md focus:outline-none focus:border-blue-500 focus:border-2
-                            ${
-                              formikProps.errors.businessSeatQuantity &&
-                              formikProps.touched.businessSeatQuantity
-                                ? "border-red-400 border-2"
-                                : ""
-                            }`}
+                            ${formikProps.errors.businessSeatQuantity &&
+                                  formikProps.touched.businessSeatQuantity
+                                  ? "border-red-400 border-2"
+                                  : ""
+                                }`}
                               onChange={(event) => {
                                 handleChange(event, formikProps);
                                 handleSetData(
@@ -954,12 +950,11 @@ function FightTeraForm({ sendSubmitStatus }) {
                               type="number"
                               name="businessSeatPrice"
                               value={form.businessSeatPrice || "0"}
-                              className={`px-2 w-full h-8 border border-solid rounded-md  focus:outline-none focus:border-blue-500 focus:border-2  ${
-                                formikProps.errors.businessSeatPrice &&
+                              className={`px-2 w-full h-8 border border-solid rounded-md  focus:outline-none focus:border-blue-500 focus:border-2  ${formikProps.errors.businessSeatPrice &&
                                 formikProps.touched.businessSeatPrice
-                                  ? "border-red-400 border-2"
-                                  : ""
-                              }`}
+                                ? "border-red-400 border-2"
+                                : ""
+                                }`}
                               onChange={(event) => {
                                 handleChange(event, formikProps);
                                 handleSetData(
@@ -996,12 +991,11 @@ function FightTeraForm({ sendSubmitStatus }) {
                               type="number"
                               name="vipSeatQuantity"
                               value={form.vipSeatQuantity || "0"}
-                              className={`px-2 w-full h-8 border border-solid rounded-md focus:outline-none focus:border-blue-500 focus:border-2  ${
-                                formikProps.errors.vipSeatQuantity &&
+                              className={`px-2 w-full h-8 border border-solid rounded-md focus:outline-none focus:border-blue-500 focus:border-2  ${formikProps.errors.vipSeatQuantity &&
                                 formikProps.touched.vipSeatQuantity
-                                  ? "border-red-400 border-2"
-                                  : ""
-                              }`}
+                                ? "border-red-400 border-2"
+                                : ""
+                                }`}
                               onChange={(event) => {
                                 handleChange(event, formikProps);
                                 handleSetData(
@@ -1017,12 +1011,11 @@ function FightTeraForm({ sendSubmitStatus }) {
                               type="number"
                               name="vipSeatPrice"
                               value={form.vipSeatPrice || "0"}
-                              className={`px-2 w-full h-8 border border-solid rounded-md  focus:outline-none focus:border-blue-500 focus:border-2 ${
-                                formikProps.errors.vipSeatPrice &&
+                              className={`px-2 w-full h-8 border border-solid rounded-md  focus:outline-none focus:border-blue-500 focus:border-2 ${formikProps.errors.vipSeatPrice &&
                                 formikProps.touched.vipSeatPrice
-                                  ? "border-red-400 border-2"
-                                  : ""
-                              }`}
+                                ? "border-red-400 border-2"
+                                : ""
+                                }`}
                               onChange={(event) => {
                                 handleChange(event, formikProps);
                                 handleSetData(

@@ -19,7 +19,7 @@ import axios from "../../config/privateAxios";
 function FlightFilter({ flightBrands }) {
   const flightDetailsDTO = useSelector(selectFlightDetailsDTO);
   const [labelValues, setLabelValues] = useState(["0", "24"]);
-  const [priceLabelValues, setPriceLabelValues] = useState(["0", "20000"]);
+  const [priceLabelValues, setPriceLabelValues] = useState(["0", "200000000"]);
   const airPlantSearchDTO = useSelector(selectAirPlaneSearchDTO);
 
   const dispatch = useDispatch();
@@ -144,9 +144,8 @@ function FlightFilter({ flightBrands }) {
         <div className="flight-filter__item-container">
           <div className="flight-filter__item-container__item">
             <div
-              className={`flight-filter__item-container__item__title ${
-                showList.list1 ? "show" : ""
-              }`}
+              className={`flight-filter__item-container__item__title ${showList.list1 ? "show" : ""
+                }`}
               onClick={() => toggleList("list1")}
             >
               <span className="flight-filter__item-container__item__title_elem1">
@@ -157,9 +156,8 @@ function FlightFilter({ flightBrands }) {
               </span>
             </div>
             <div
-              className={`flight-filter__item-container__item__brands ${
-                showList.list1 ? "show" : ""
-              }`}
+              className={`flight-filter__item-container__item__brands ${showList.list1 ? "show" : ""
+                }`}
             >
               {airPlantSearchDTO.map((airplane) => (
                 <div
@@ -245,12 +243,12 @@ function FlightFilter({ flightBrands }) {
               </span>
 
               <span>
-                {priceLabelValues[0]} - {priceLabelValues[1]}
+                {priceLabelValues[0]} - {priceLabelValues[1].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
               </span>
             </div>
             <RangeSlider
               min={0}
-              max={20000}
+              max={200000000}
               onChange={handlePriceRangeChange}
               onLabelChange={handlePriceLabelChange}
             />
@@ -260,9 +258,8 @@ function FlightFilter({ flightBrands }) {
         <div className="flight-filter__item-container">
           <div className="flight-filter__item-container__item">
             <div
-              className={`flight-filter__item-container__item__title ${
-                show ? "show" : ""
-              }`}
+              className={`flight-filter__item-container__item__title ${show ? "show" : ""
+                }`}
               onClick={toogleShow}
             >
               <span className="flight-filter__item-container__item__title_elem1">
@@ -273,9 +270,8 @@ function FlightFilter({ flightBrands }) {
               </span>
             </div>
             <div
-              className={`flight-filter__item-container__item__brands ${
-                show ? "show" : ""
-              }`}
+              className={`flight-filter__item-container__item__brands ${show ? "show" : ""
+                }`}
             >
               <div className="flex flex-col gap-3">
                 <h1 style={{ fontSize: "18px" }} className="pt-2">

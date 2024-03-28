@@ -4,12 +4,17 @@ import HotelIcon1 from "../../icon/HotelIcon1";
 import HotelStarSmall from "../../icon/HotelStarSmall";
 import LocationIconBlack from "../../icon/LocationIconBlack";
 import TravelokaIcon from "../../icon/TravelokaIcon";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { changeHotelId } from "../../../redux/features/hotelSlice";
 
 function HotelCard(params) {
-    console.log(params.hotel);
+    // console.log(params.hotel);
     const hotel = params.hotel;
     const hotelStar = params.hotel.hotelStar;
     const [stars, setStars] = useState([]);
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
     useEffect(() => {
         let arr = [];
         for (let index = 0; index < hotelStar; index++) {
@@ -19,8 +24,12 @@ function HotelCard(params) {
     }, [])
     const originPrice = hotel.minOriginPrice;
     const sellPrice = hotel.minSellPrice;
+    function handleChooseHotel() {
+        dispatch(changeHotelId(hotel.id))
+        navigate(`/hotels/${hotel.id}`);
+    }
     return (
-        <div className="hotelCard">
+        <div onClick={handleChooseHotel} className="hotelCard">
             <div className="hotelImg">
                 <img src={hotel.defaultImg} alt="hotelIcon" />
             </div>

@@ -7,10 +7,13 @@ export const hotelsSlice = createSlice({
     reducers: {
         changeHotels:(state,action)=>{
             state.hotels = action.payload;
+        },
+        addHotels:(state,action)=>{
+            state.hotels = [...state.hotels, ...action.payload]
         }
     }
 });
 
-export const { changeHotels } = hotelsSlice.actions
+export const { changeHotels, addHotels } = hotelsSlice.actions
 export const selectHotels = (state) => state.hotels;
 export default hotelsSlice.reducer;

@@ -14,9 +14,9 @@ function DesktopIcon() {
           <rect width="24" height="24"></rect>
           <path
             stroke="#03121A"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
             d="M19,8 L19,7 L6,7 C5.44771525,7 5,7.44771525 5,8 L5,16 C5,16.5522847 5.44771525,17 6,17 L19,17 L19,16 M19,11 L19,13"
           ></path>
           <rect
@@ -25,9 +25,9 @@ function DesktopIcon() {
             x="2"
             y="4"
             stroke="#03121A"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
             rx="2"
           ></rect>
           <path

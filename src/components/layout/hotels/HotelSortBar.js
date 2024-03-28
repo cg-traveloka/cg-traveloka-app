@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { changeSort, selectHotel } from "../../../redux/features/hotelSlice";
+import { changePageNumber, changeSort, selectHotel } from "../../../redux/features/hotelSlice";
 import { changeHotels, selectHotels } from "../../../redux/features/hotelsSlice";
 import axios from "../../../config/privateAxios";
 function HotelSortBar(params) {
@@ -9,8 +9,10 @@ function HotelSortBar(params) {
     function handleChangeSort(event) {
         // console.log(event.target.value);
         dispatch(changeSort(event.target.value));
+        dispatch(changePageNumber(0))
         axios.post("/api/search/hotels", {
             ...hotel,
+            pageNumber: 0,
             sort: event.target.value
         })
             .then((result) => dispatch(changeHotels(result.data.hotels)))

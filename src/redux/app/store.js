@@ -3,7 +3,6 @@ import hotelReducer from "../features/hotelSlice";
 import userReducer from "../features/userSlice";
 import modalReducer from "../features/modalSlice";
 import hotelsReducer from "../features/hotelsSlice";
-
 import flightReducer from "../features/flightSlice";
 import customerReducer from "../features/customerSlice";
 import bookingReducer from "../features/bookingSlice";
@@ -16,6 +15,7 @@ export const store = configureStore({
     hotels: hotelsReducer,
     customer: customerReducer,
     booking: bookingReducer,
+    hotels: hotelsReducer
   },
 });
 
