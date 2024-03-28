@@ -20,6 +20,15 @@ import ReviewHotel from "./components/profile/ReviewHotel";
 import ListBookingAirplaneStatus from "./components/profile/ListBookingAirplaneStatus";
 import ListBookingComboStatus from "./components/profile/ListBookingComboStatus";
 import EditBonus from "./components/profile/EditBonus";
+import FlightTitle from "./components/flight-search/FlightTitle";
+import Search from "./components/flights/Search";
+import FlightFilter from "./components/flight-search/flightFilter";
+import FlightSearch from "./pages/FlightSearch";
+import FlightTera from "./pages/FightTera";
+import ComboDiscovery from "./components/hompage/ComboDiscovery";
+import SeatDetailPage from "./components/flight-search/SeatDetailPage";
+import HotelTera from "./pages/tera/HotelTera";
+import RoomTera from "./pages/tera/RoomTera";
 
 Modal.setAppElement("#root");
 
@@ -110,6 +119,16 @@ function App() {
             <Route path="/mybonus" element={<EditBonus />} />
           </Route>
           <Route path="/profile" element={<EditProfile />} />
+          <Route path="/flight-search" element={<FlightSearch />} />
+          <Route path="/search" element={<Flight />} />
+          <Route path="/home" element={<HomePage />} />
+          <Route path="/home1" element={<SeatDetailPage />} />
+          {/* <Route element={<ProtectedRoute isAllowed={user.user != null} />}> */}
+          {/* <Route path="/hotels" element={<Hotels />} /> */}
+          {/* </Route> */}
+          <Route path="/tera/flight" element={<FlightTera />} />
+          <Route path="/tera/hotel" element={<HotelTera />} />
+          <Route path="/tera/room" element={<RoomTera />} />
         </Routes>
       </BrowserRouter>
 
