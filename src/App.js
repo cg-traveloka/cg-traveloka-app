@@ -1,19 +1,22 @@
 import { BrowserRouter, Route, Routes, useParams } from "react-router-dom";
 import Login from "./pages/auth/login";
+import "./style/scss/main.scss";
 import AuthRoutes from "./routes/AuthRoutes";
+import Flight from "./pages/flights/Flights";
 import Hotels from "./pages/hotel/Hotels";
 import ProtectedRoute from "./routes/ProtectedRoute";
-import { useSelector, useDispatch } from "react-redux";
 import { selectUser } from "./redux/features/userSlice";
+import EditPendingBookingHotelStatus from "./components/profile/EditPendingBookingHotelStatus";
+import HomePage from "./pages/HomePage";
+import { useSelector, useDispatch } from "react-redux";
 import React, { useEffect } from "react";
 import Modal from "react-modal";
 import { selectModal, setModalIsOpen } from "./redux/features/modalSlice";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
-import HomePage from "./pages/HomePage";
 import HotelInfo from "./pages/hotel/HotelInfo";
 import RoomContractPreview from "./components/layout/hotels/RoomContractPreview";
+import EditPendingBookingComboStatus from "./components/profile/EditPendingBookingComboStatus";
 
 Modal.setAppElement("#root");
 
@@ -95,6 +98,7 @@ function App() {
             <Route path="/hotels/:id" element={<HotelInfo />} />
             <Route path="/hotels/booking/:id" element={<RoomContractPreview />} />
           </Route>
+          <Route path="/:id" element={<EditPendingBookingHotelStatus />} />
         </Routes>
       </BrowserRouter>
 

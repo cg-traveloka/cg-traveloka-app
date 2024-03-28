@@ -43,6 +43,6 @@ function Hotels(params) {
                 </div>
             </div>
         </div>
-    );
+  );
 }
 export default Hotels;

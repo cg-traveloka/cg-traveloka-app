@@ -5,9 +5,13 @@ import "../../style/scss/base/_reset.scss";
 import "../../style/scss/auth/_login.scss";
 import { useSelector, useDispatch } from "react-redux";
 import { selectUser, saveUser } from "../../redux/features/userSlice";
-import { selectModal, setModalIsOpen, setModalMessage, setModalStatus } from "../../redux/features/modalSlice";
+import {
+  selectModal,
+  setModalIsOpen,
+  setModalMessage,
+  setModalStatus,
+} from "../../redux/features/modalSlice";
 import { toast } from "react-toastify";
-
 
 function Login() {
   const [formData, setFormData] = useState({});
@@ -31,6 +35,16 @@ function Login() {
         username: formData.username,
         password: formData.password,
       });
+
+      await axios.post("/login/account", data).then((result) => {
+        dispatch(saveUser(result.data));
+        console.log(result.data);
+        dispatch(setModalMessage("Đăng nhập thành công"));
+        dispatch(setModalStatus("sucess"));
+        dispatch(setModalIsOpen(true));
+        toast.success("Đăng nhập thành công");
+        // navigate("/hotels");
+      });
       await axios.post('/login/account', data)
         .then(result => {
           dispatch(saveUser(result.data));
@@ -43,9 +57,9 @@ function Login() {
         });
     } catch (error) {
       dispatch(setModalMessage("Đăng nhập thất bại"));
-      dispatch(setModalStatus("error"))
+      dispatch(setModalStatus("error"));
       dispatch(setModalIsOpen(true));
-      toast.error("Đăng nhập thất bại")
+      toast.error("Đăng nhập thất bại");
       throw error;
     }
   };
@@ -75,7 +89,7 @@ function Login() {
                   name="username"
                   value={formData.username}
                   onChange={handleChangeInput}
-                  placeholder="Điền email hoặc số điện thoại của bạn ở đây"
+                  placeholder="Điền email hoặc số điện thoại"
                 ></input>
                 <div className="input-wrapper">
                   <span className="form-label">Mật khẩu</span>

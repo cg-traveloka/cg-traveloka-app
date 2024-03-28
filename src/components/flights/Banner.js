@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "../../style/scss/flight/_banner.scss";
 function Banner() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const numSlides = 2;

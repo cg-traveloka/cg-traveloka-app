@@ -1,18 +1,18 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    id: null,
-    startDate: new Date().toISOString().split("T")[0],
-    nights: 1,
-    cityId: 30,
-    cityName: "Thành phố Hồ Chí Minh",
-    personQuantity: 1,
-    roomQuantity: 1,
-    moneyFrom: 0,
-    moneyTo: 106000000,
-    stars: [],
-    sort: "booked",
-    pageNumber: 0
+  id: null,
+  startDate: new Date().toISOString().split("T")[0],
+  nights: 1,
+  cityId: 30,
+  cityName: "Thành phố Hồ Chí Minh",
+  personQuantity: 1,
+  roomQuantity: 1,
+  moneyFrom: 0,
+  moneyTo: 106000000,
+  stars: [],
+  sort: "booked",
+  pageNumber: 0,
 };
 export const hotelSlice = createSlice({
     name: "hotel",
@@ -58,7 +58,6 @@ export const hotelSlice = createSlice({
         }
     }
 });
-
 export const { changeHotelId, changeCity, changeStartDate, changeNights, changePersonQuantity, changeRoomQuantity, changeMoneyFrom, changeMoneyTo, addStar, removeStar, changeSort, changePageNumber } = hotelSlice.actions
 export const selectHotel = (state) => state.hotel;
 export default hotelSlice.reducer;
